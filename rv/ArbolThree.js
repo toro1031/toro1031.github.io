@@ -5,18 +5,15 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.CylinderGeometry( 10, 10, 25, 30, 5 );
+var geometry = new THREE.CylinderGeometry( 5, 5, 10, 30, 5 );
 var material = new THREE.MeshBasicMaterial( { color: 0xC53FE6 } );
 var cylinder = new THREE.Mesh( geometry, material );
 scene.add( cylinder );
 
-camera.position.z = 40;
+var geometry2 = new THREE.SphereGeometry( 5, 32, 32 );
+var material2 = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+var sphere = new THREE.Mesh( geometry2, material2 );
+scene.add( sphere );
 
-var render = function () {
-requestAnimationFrame( render );
-cube.rotation.x += 0.001;
-cube.rotation.y += 0.01;
-renderer.render(scene, camera);
-};
+camera.position.z = 25;
 
-render();
