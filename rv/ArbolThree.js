@@ -35,23 +35,3 @@ cone.position.x = 50;
 cone.position.y = 13;
 
 renderer.render( scene, camera );
-
-function animate() {
-
-				requestAnimationFrame( animate, renderer.domElement );
-
-				render();
-				stats.update();
-
-			}
-function render() {
-
-				theta += 0.1;
-
-				camera.position.x = 100 * Math.sin( THREE.Math.degToRad( theta ) );
-				camera.lookAt( scene.position );
-
-				camera.updateMatrixWorld();
-}
-
-animate();
