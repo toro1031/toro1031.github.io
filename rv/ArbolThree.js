@@ -30,9 +30,9 @@ var cone = new THREE.Mesh( geometry4, material4 );
 scene.add( cone );
 
 cylinder2.position.x = 50;
-cylinder2.position.y = -10;
+cylinder2.position.y = -13;
 cone.position.x = 50;
-cone.position.y = 25;
+cone.position.y = 13;
 
 renderer.render( scene, camera );
 
