@@ -24,7 +24,7 @@ var material3 = new THREE.MeshBasicMaterial( { color: 0x7A4B0D } );
 var cylinder2 = new THREE.Mesh( geometry3, material3 );
 scene.add( cylinder2 );
 
-var geometry4 = new THREE.ConeGeometry( 10, 35, 50 );
+var geometry4 = new THREE.ConeGeometry( 15, 40, 50 );
 var material4 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var cone = new THREE.Mesh( geometry4, material4 );
 scene.add( cone );
