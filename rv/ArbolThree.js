@@ -10,15 +10,11 @@ document.body.appendChild( renderer.domElement );
 var geometry = new THREE.CylinderGeometry( 3, 3, 50, 30, 5 );
 var material = new THREE.MeshBasicMaterial( { color: 0x7A4B0D } );
 var cylinder = new THREE.Mesh( geometry, material );
-cylinder.rotateX(Math.PI/4);
-cylinder.rotateY(-Math.PI/4);
 scene.add( cylinder );
 
-var geometry2 = new THREE.SphereGeometry( 8, 25, 25 );
+var geometry2 = new THREE.SphereGeometry( 8, 10, 50 );
 var material2 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var sphere = new THREE.Mesh( geometry2, material2 );
-sphere.rotateX(Math.PI/4);
-sphere.rotateY(-Math.PI/4);
 scene.add( sphere );
 
 sphere.position.y = 25;
