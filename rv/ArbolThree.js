@@ -16,4 +16,5 @@ var sphere = new THREE.Mesh( geometry2, material2 );
 scene.add( sphere );
 
 camera.position.z = 25;
+sphere.position.z = 15;
 
