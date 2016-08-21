@@ -10,7 +10,7 @@ var material = new THREE.MeshBasicMaterial( { color: 0xC53FE6 } );
 var cylinder = new THREE.Mesh( geometry, material );
 scene.add( cylinder );
 
-camera.position.z = 5;
+camera.position.z = 40;
 
 var render = function () {
 requestAnimationFrame( render );
