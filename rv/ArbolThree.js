@@ -19,7 +19,7 @@ var material2 = new THREE.MeshBasicMaterial( { color: 0x00FF00 } );
 var sphere = new THREE.Mesh( geometry2, material2 );
 scene.add( sphere );
 
-sphere.position.z = 35;
+sphere.position.x = 35;
 
 renderer.render( scene, camera );
 
