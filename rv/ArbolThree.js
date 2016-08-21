@@ -17,21 +17,22 @@ var material2 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var sphere = new THREE.Mesh( geometry2, material2 );
 scene.add( sphere );
 
-sphere.position.y = 35;
+sphere.position.y = 25;
 
 var geometry3 = new THREE.CylinderGeometry( 3, 3, 10, 30, 5 );
 var material3 = new THREE.MeshBasicMaterial( { color: 0x7A4B0D } );
 var cylinder2 = new THREE.Mesh( geometry3, material3 );
 scene.add( cylinder2 );
 
-var geometry4 = new THREE.SphereGeometry( 10, 43, 50 );
+var geometry4 = new THREE.ConeGeometry( 10, 43, 50 );
 var material4 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var cone = new THREE.Mesh( geometry4, material4 );
 scene.add( cone );
 
 cylinder2.position.x = 50;
+cylinder2.position.y = -25;
 cone.position.x = 50;
-cone.position.y = 10;
+cone.position.y = -15;
 
 renderer.render( scene, camera );
 
