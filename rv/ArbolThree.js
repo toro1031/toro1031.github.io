@@ -5,10 +5,10 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var geometry = new THREE.CylinderGeometry( 10, 10, 25, 30, 5 );
 var material = new THREE.MeshBasicMaterial( { color: 0xC53FE6 } );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+var cylinder = new THREE.Mesh( geometry, material );
+scene.add( cylinder );
 
 camera.position.z = 5;
 
