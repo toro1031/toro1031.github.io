@@ -10,12 +10,12 @@ var material = new THREE.MeshBasicMaterial( { color: 0x6ACBE3 } );
 var cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
-camera.position.z = 10;
+camera.position.z = 50;
 
 var render = function () {
 requestAnimationFrame( render );
-cube.rotation.x += 0.01;
-cube.rotation.y += 0.1;
+cube.rotation.x += 0.001;
+cube.rotation.y += 0.01;
 renderer.render(scene, camera);
 };
 
