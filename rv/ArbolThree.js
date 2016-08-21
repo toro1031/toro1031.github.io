@@ -1,8 +1,8 @@
 var escena = new THREE.Scene();
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 5;
+camara.position.z = 15;
 var renderizador = new THREE.WebGLRenderer();
-renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95 );
+renderizador.setSize( window.innerHeight*.5, window.innerHeight*.5 );
 document.body.appendChild( renderizador.domElement );
 var forma = new THREE.BoxGeometry( 1, 1, 1 );
 var material = new THREE.MeshNormalMaterial();
