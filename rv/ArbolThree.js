@@ -12,7 +12,7 @@ var material = new THREE.MeshBasicMaterial( { color: 0x7A4B0D } );
 var cylinder = new THREE.Mesh( geometry, material );
 scene.add( cylinder );
 
-var geometry2 = new THREE.SphereGeometry( 8, 10, 50 );
+var geometry2 = new THREE.SphereGeometry( 8, 50, 10 );
 var material2 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var sphere = new THREE.Mesh( geometry2, material2 );
 scene.add( sphere );
