@@ -17,9 +17,11 @@ scene.add( cylinder );
 var geometry2 = new THREE.SphereGeometry( 8, 25, 25 );
 var material2 = new THREE.MeshBasicMaterial( { color: 0x32720D } );
 var sphere = new THREE.Mesh( geometry2, material2 );
+sphere.rotateX(Math.PI/4);
+sphere.rotateY(-Math.PI/4);
 scene.add( sphere );
 
-sphere.position.y = 35;
+sphere.position.y = 25;
 
 renderer.render( scene, camera );
 
