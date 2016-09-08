@@ -63,11 +63,14 @@ torreMalla4.position.y = 80;
 
 var escena = new THREE.Scene();
 escena.add(torreMalla1);
-escena.add(torreMalla1);
+escena.add(torreMalla2);
+escena.add(torreMalla3);
+escena.add(torreMalla4);
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 50;
-camara.position.y = 7;
+camara.position.y = 40;
+camara.position.x = 40;
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95);
