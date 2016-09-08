@@ -61,9 +61,10 @@ var campoVision = 45; //grados
 var relacionAspecto = window.innerWidth / window.innerHeight;
 var planoCercano = 1;
 var planoLejano = 1000;
+var centro = new THREE.Vector3(40, 0, 40);
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano);
 camara.position.set(40, 80, 200);
-camara.lookAt(new THREE.Vector3(40, 0, 40));
+camara.lookAt(centro);
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
