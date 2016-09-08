@@ -59,10 +59,10 @@ escena.add(torre4);
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 100;
-camara.position.y = 500;
+camara.position.y = 40;
 camara.position.x = 40;
 
 renderizador = new THREE.WebGLRenderer();
-renderizador.setSize(  window.innerWidth, window.innerHeight );
+renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
 document.body.appendChild( renderizador.domElement );
 renderizador.render( escena, camara );
