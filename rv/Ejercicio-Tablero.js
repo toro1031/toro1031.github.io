@@ -62,10 +62,10 @@ var relacionAspecto = window.innerWidth / window.innerHeight;
 var planoCercano = 1;
 var planoLejano = 1000;
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano);
+camara.lookAt = (40, 0, 40);
 camara.position.z = 200;
 camara.position.y = 80;
 camara.position.x = 40;
-camara.lookAt = (40, -40, 40);
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
