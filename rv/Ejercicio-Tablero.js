@@ -61,7 +61,6 @@ var camara = new THREE.PerspectiveCamera();
 camara.position.z = 100;
 camara.position.y = 500;
 camara.position.x = 40;
-camara.lookAt( 40, 40, 0);
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth, window.innerHeight );
