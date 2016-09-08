@@ -52,6 +52,7 @@ torre3.position.z=80;
 var torre4 = new THREE.Mesh(torreForma, blanco);
 torre4.position.z=80;
 
+
 var escena = new THREE.Scene();
 escena.add(torre1);
 escena.add(torre2);
