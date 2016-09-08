@@ -1,5 +1,4 @@
 //TORRE
-
 var puntos = [];
 puntos.push( new THREE.Vector2( 0, 0 ) );
 puntos.push( new THREE.Vector2( 5, 0 ) );
@@ -33,7 +32,7 @@ var torreForma6 = new THREE.BoxGeometry( 2, 1.5, 2 );
 torreForma6.translate(-2.75,14.5,-2.75);
 var torreMalla6 = new THREE.Mesh(torreForma6);
 
-//JUNTAR MALLAS:
+//JUNTAR MALLAS
 var torreForma = new THREE.Geometry();
 torreForma.merge(torreMalla1.geometry, torreMalla1.matrix);
 torreForma.merge(torreMalla2.geometry, torreMalla2.matrix);
@@ -43,29 +42,29 @@ torreForma.merge(torreMalla5.geometry, torreMalla5.matrix);
 torreForma.merge(torreMalla6.geometry, torreMalla6.matrix);
 
 var material = new THREE.MeshNormalMaterial();
-var torreMalla1 = new THREE.Mesh(torreForma, material);
+var torreMallaf1 = new THREE.Mesh(torreForma, material);
 
-var torreMalla2=torreMalla1;
-var torreMalla3=torreMalla1;
-var torreMalla4=torreMalla1;
+var torreMallaf2=torreMallaf1;
+var torreMallaf3=torreMallaf1;
+var torreMallaf4=torreMallaf1;
 
-torreMalla1.position.x = 0;
-torreMalla1.position.y = 0;
+torreMallaf1.position.x = 0;
+torreMallaf1.position.y = 0;
 
-torreMalla2.position.x = 80;
-torreMalla2.position.y = 0;
+torreMallaf2.position.x = 80;
+torreMallaf2.position.y = 0;
 
-torreMalla3.position.x = 80;
-torreMalla3.position.y = 80;
+torreMallaf3.position.x = 80;
+torreMallaf3.position.y = 80;
 
-torreMalla4.position.x = 0;
-torreMalla4.position.y = 80;
+torreMallaf4.position.x = 0;
+torreMallaf4.position.y = 80;
 
 var escena = new THREE.Scene();
-escena.add(torreMalla1);
-escena.add(torreMalla2);
-escena.add(torreMalla3);
-escena.add(torreMalla4);
+escena.add(torreMallaf1);
+escena.add(torreMallaf2);
+escena.add(torreMallaf3);
+escena.add(torreMallaf4);
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 50;
@@ -76,5 +75,5 @@ renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95);
 document.body.appendChild( renderizador.domElement );
 renderizador.render( escena, camara );
-//TABLERO
 
+//TABLERO
