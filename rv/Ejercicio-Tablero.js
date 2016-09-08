@@ -66,6 +66,7 @@ camara.lookAt = (0, 0, 0);
 camara.position.z = 200;
 camara.position.y = 80;
 camara.position.x = 40;
+camara.updateProjectionMatrix();
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
