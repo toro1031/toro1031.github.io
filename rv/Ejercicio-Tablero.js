@@ -47,9 +47,9 @@ var torre2 = new THREE.Mesh(torreForma, material);
 torre2.position.x=80;
 var torre3 = new THREE.Mesh(torreForma, material);
 torre3.position.x=80;
-torre3.position.y=80;
+torre3.position.z=80;
 var torre4 = new THREE.Mesh(torreForma, material);
-torre4.position.y=80;
+torre4.position.z=80;
 
 var escena = new THREE.Scene();
 escena.add(torre1);
@@ -58,8 +58,7 @@ escena.add(torre3);
 escena.add(torre4);
 
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 100;
-camara.position.y = 40;
+camara.position.z = 200;
 camara.position.x = 40;
 
 renderizador = new THREE.WebGLRenderer();
