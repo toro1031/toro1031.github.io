@@ -122,9 +122,18 @@ camara.position.set(40, 80, 150);
 camara.lookAt(centro);
 
 // Luces
-var L
-luz = new THREE.PointLight( 0xffffff, 1, 150, 1 );
+var luz = new THREE.PointLight( 0xffffff, 1, 150, 1 );
 luz.position.set(35, 25, 35);
+escena.add( luz );
+var l1 = new THREE.DirectionalLight( 0xffffff );
+l1.position.set( -10, 25, -10 )
+var l2 = new THREE.DirectionalLight( 0xffffff );
+l1.position.set( 90, 25, -10 )
+var l3 = new THREE.DirectionalLight( 0xffffff );
+l1.position.set( -10, 25, 90 )
+var l4 = new THREE.DirectionalLight( 0xffffff );
+l1.position.set( 90, 25, 90 )
+escena.add( luz );
 escena.add( luz );
 
 renderizador = new THREE.WebGLRenderer();
