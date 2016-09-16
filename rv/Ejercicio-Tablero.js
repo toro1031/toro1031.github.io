@@ -63,8 +63,8 @@ escena.add(torre3);
 escena.add(torre4);
 
 // Formar tablero:
-var verdeOscuro = new THREE.MeshBasicMaterial( { color: 0x3C9823 } );
-var verdeClaro = new THREE.MeshBasicMaterial( { color: 0xB1FB9C } );
+var verdeOscuro = new THREE.MeshLambertMaterial( { color: 0x3C9823 } );
+var verdeClaro = new THREE.MeshLambertMaterial( { color: 0xB1FB9C } );
 var cuadros = [new THREE.BoxGeometry( 10, 2, 10 ) ];
 var cuadroMallas = [new THREE.Mesh(cuadros[0],verdeOscuro)];
 var counter = 0;
@@ -89,7 +89,7 @@ var marco1 = new THREE.BoxGeometry( 80, 5, 5);
 var marco2 = new THREE.BoxGeometry( 80, 5, 5);
 var marco3 = new THREE.BoxGeometry( 5, 5, 90);
 var marco4 = new THREE.BoxGeometry( 5, 5, 90);
-var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
+var cafe = new THREE.MeshLambertMaterial( { color: 0x653909 } );
 var marcomalla1 = new THREE.Mesh(marco1, cafe);
 marcomalla1.position.x=35;
 marcomalla1.position.y=3;
