@@ -88,8 +88,8 @@ for (var i = 0; i < 8; i++) {
 var marco1 = new THREE.BoxGeometry( 100, 5, 5);
 var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
 var marcomalla1 = new THREE.Mesh(marco1, cafe);
-marcomalla1.position.x=30;
-marcomalla1.position.z=85;
+marcomalla1.position.x=45;
+marcomalla1.position.z=75;
 escena.add(marcomalla1);
 
 //Camara
