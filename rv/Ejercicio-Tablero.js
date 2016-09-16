@@ -111,7 +111,6 @@ marcomalla4.position.y=3;
 marcomalla4.position.z=37.5;
 escena.add(marcomalla4);
 
-
 //Camara
 var campoVision = 45; //grados
 var relacionAspecto = window.innerWidth / window.innerHeight;
@@ -123,8 +122,10 @@ camara.position.set(40, 80, 150);
 camara.lookAt(centro);
 
 // Luces
-var ambientLight = new THREE.AmbientLight( 0xffffff );
-escena.add( ambientLight );
+var L
+luz = new THREE.DirectionalLight( 0xffffff, 0.5 );
+luz.position.set(40, 100, 40);
+escena.add( luz );
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
