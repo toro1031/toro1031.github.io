@@ -128,13 +128,15 @@ escena.add( luz );
 var l1 = new THREE.DirectionalLight( 0xffffff );
 l1.position.set( -10, 25, -10 )
 var l2 = new THREE.DirectionalLight( 0xffffff );
-l1.position.set( 90, 25, -10 )
+l2.position.set( 90, 25, -10 )
 var l3 = new THREE.DirectionalLight( 0xffffff );
-l1.position.set( -10, 25, 90 )
+l3.position.set( -10, 25, 90 )
 var l4 = new THREE.DirectionalLight( 0xffffff );
-l1.position.set( 90, 25, 90 )
-escena.add( luz );
-escena.add( luz );
+l4.position.set( 90, 25, 90 )
+escena.add( l1 );
+escena.add( l2 );
+escena.add( l3 );
+escena.add( l4 );
 
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(  window.innerWidth*.95, window.innerHeight*.95 );
