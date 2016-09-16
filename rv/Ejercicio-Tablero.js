@@ -123,7 +123,7 @@ camara.lookAt(centro);
 
 // Luces
 var L
-luz = new THREE.DirectionalLight( 0xffffff );
+luz = new THREE.PointLight( 0xffffff, 1, 150, 2 );
 luz.position.set(0, 3, 0);
 escena.add( luz );
 
