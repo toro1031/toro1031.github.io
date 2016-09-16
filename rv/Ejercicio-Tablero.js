@@ -87,8 +87,8 @@ for (var i = 0; i < 8; i++) {
 
 var marco1 = new THREE.BoxGeometry( 80, 5, 5);
 var marco2 = new THREE.BoxGeometry( 80, 5, 5);
-var marco3 = new THREE.BoxGeometry( 5, 5, 80);
-var marco4 = new THREE.BoxGeometry( 5, 5, 80);
+var marco3 = new THREE.BoxGeometry( 5, 5, 90);
+var marco4 = new THREE.BoxGeometry( 5, 5, 90);
 var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
 var marcomalla1 = new THREE.Mesh(marco1, cafe);
 marcomalla1.position.x=35;
@@ -103,12 +103,12 @@ escena.add(marcomalla2);
 var marcomalla3 = new THREE.Mesh(marco3, cafe);
 marcomalla3.position.x=-5;
 marcomalla3.position.y=3;
-marcomalla3.position.z=45;
+marcomalla3.position.z=35;
 escena.add(marcomalla3);
 var marcomalla4 = new THREE.Mesh(marco4, cafe);
-marcomalla4.position.x=80;
+marcomalla4.position.x=75;
 marcomalla4.position.y=3;
-marcomalla4.position.z=45;
+marcomalla4.position.z=35;
 escena.add(marcomalla4);
 
 
