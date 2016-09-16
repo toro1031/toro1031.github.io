@@ -103,12 +103,12 @@ escena.add(marcomalla2);
 var marcomalla3 = new THREE.Mesh(marco3, cafe);
 marcomalla3.position.x=-5;
 marcomalla3.position.y=3;
-marcomalla3.position.z=35;
+marcomalla3.position.z=45;
 escena.add(marcomalla3);
 var marcomalla4 = new THREE.Mesh(marco4, cafe);
 marcomalla4.position.x=80;
 marcomalla4.position.y=3;
-marcomalla4.position.z=35;
+marcomalla4.position.z=45;
 escena.add(marcomalla4);
 
 
