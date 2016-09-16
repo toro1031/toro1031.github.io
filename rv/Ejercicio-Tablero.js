@@ -124,7 +124,7 @@ camara.lookAt(centro);
 // Luces
 var L
 luz = new THREE.DirectionalLight( 0xffffff );
-luz.position.set(40, 75, 40);
+luz.position.set(40, 10, 40);
 escena.add( luz );
 
 renderizador = new THREE.WebGLRenderer();
