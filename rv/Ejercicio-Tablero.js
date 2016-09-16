@@ -86,7 +86,11 @@ for (var i = 0; i < 8; i++) {
 //Marco Tablero
 
 var marco1 = new THREE.BoxGeometry( 80, 5, 5);
+var marco2 = new THREE.BoxGeometry( 80, 5, 5);
+var marco3 = new THREE.BoxGeometry( 80, 5, 5);
+var marco4 = new THREE.BoxGeometry( 80, 5, 5);
 var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
+var marcomalla1 = new THREE.Mesh(marco1, cafe);
 var marcomalla1 = new THREE.Mesh(marco1, cafe);
 marcomalla1.position.x=35;
 marcomalla1.position.y=3;
