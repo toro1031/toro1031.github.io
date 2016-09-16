@@ -63,20 +63,20 @@ escena.add(torre3);
 escena.add(torre4);
 
 // Formar tablero:
-var verdeOscuro = new THREE.MeshLambertMaterial( { color: 0x3C9823 } );
-var verdeClaro = new THREE.MeshLambertMaterial( { color: 0xB1FB9C } );
+//var verdeOscuro = new THREE.MeshLambertMaterial( { color: 0x3C9823 } );
+//var verdeClaro = new THREE.MeshLambertMaterial( { color: 0xB1FB9C } );
 var cuadros = [new THREE.BoxGeometry( 10, 2, 10 ) ];
-var cuadroMallas = [new THREE.Mesh(cuadros[0],verdeOscuro)];
+var cuadroMallas = [new THREE.Mesh(cuadros[0],gris)];
 var counter = 0;
 for (var i = 0; i < 8; i++) {
   for (var j = 0; j < 8; j++) {
     cuadros[counter] = new THREE.BoxGeometry( 10, 2, 10 );
     cuadros[counter].translate(j*10,0,i*10);
     if((counter+i) % 2 == 0){
-      cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],verdeOscuro);
+      cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],gris);
     }
     else {
-      cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],verdeClaro);
+      cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],blanco);
     }
     escena.add(cuadroMallas[counter]);
     counter++;
@@ -122,16 +122,16 @@ camara.position.set(40, 80, 150);
 camara.lookAt(centro);
 
 // Luces
-var luz = new THREE.PointLight( 0xffffff, 1, 150, 2 );
-luz.position.set(35, 80, 35);
+var luz = new THREE.PointLight( 0xffffff, 1, 150, 1.5 );
+luz.position.set(35, 70, 35);
 escena.add( luz );
-var l1 = new THREE.DirectionalLight( 0xffffff, 0.33 );
+var l1 = new THREE.DirectionalLight( 0xffffff, 0.45 );
 l1.position.set( -10, 25, -10 )
-var l2 = new THREE.DirectionalLight( 0xffffff, 0.33 );
+var l2 = new THREE.DirectionalLight( 0xffffff, 0.45 );
 l2.position.set( 90, 25, -10 )
-var l3 = new THREE.DirectionalLight( 0xffffff, 0.33 );
+var l3 = new THREE.DirectionalLight( 0xffffff, 0.45 );
 l3.position.set( -10, 25, 90 )
-var l4 = new THREE.DirectionalLight( 0xffffff, 0.33 );
+var l4 = new THREE.DirectionalLight( 0xffffff, 0.45 );
 l4.position.set( 90, 25, 90 )
 escena.add( l1 );
 escena.add( l2 );
