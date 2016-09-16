@@ -87,15 +87,28 @@ for (var i = 0; i < 8; i++) {
 
 var marco1 = new THREE.BoxGeometry( 80, 5, 5);
 var marco2 = new THREE.BoxGeometry( 80, 5, 5);
-var marco3 = new THREE.BoxGeometry( 80, 5, 5);
-var marco4 = new THREE.BoxGeometry( 80, 5, 5);
+var marco3 = new THREE.BoxGeometry( 5, 5, 80);
+var marco4 = new THREE.BoxGeometry( 5, 5, 80);
 var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
-var marcomalla1 = new THREE.Mesh(marco1, cafe);
 var marcomalla1 = new THREE.Mesh(marco1, cafe);
 marcomalla1.position.x=35;
 marcomalla1.position.y=3;
 marcomalla1.position.z=80;
 escena.add(marcomalla1);
+var marcomalla2 = new THREE.Mesh(marco2, cafe);
+marcomalla2.position.x=35;
+marcomalla2.position.y=3;
+marcomalla2.position.z=-5;
+escena.add(marcomalla2);
+var marcomalla3 = new THREE.Mesh(marco3, cafe);
+marcomalla3.position.x=-5;
+marcomalla3.position.y=3;
+escena.add(marcomalla3);
+var marcomalla4 = new THREE.Mesh(marco4, cafe);
+marcomalla4.position.x=85;
+marcomalla4.position.y=3;
+escena.add(marcomalla4);
+
 
 //Camara
 var campoVision = 45; //grados
