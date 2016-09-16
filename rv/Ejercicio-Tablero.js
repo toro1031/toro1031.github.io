@@ -83,6 +83,15 @@ for (var i = 0; i < 8; i++) {
   }
 }
 
+//Marco Tablero
+
+var marco1 = new THREE.BoxGeometry( 100, 5, 5);
+var cafe = new THREE.MeshBasicMaterial( { color: 0x653909 } );
+marco1.transalate( 40, 0, -5);
+var marcomalla1 = new THREE.Mesh(marco1, cafe);
+escena.add(marcomalla1);
+
+//Camara
 var campoVision = 45; //grados
 var relacionAspecto = window.innerWidth / window.innerHeight;
 var planoCercano = 1;
