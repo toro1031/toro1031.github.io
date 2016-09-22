@@ -14,7 +14,7 @@ var loop = function(){
 requestAnimationFrame(loop);
 renderizador.render(escena, camara);
 malla.translateX(step);
-if(Math.abs(malla.position.x)>5)
+if(Math.abs(malla.position.x)>=3)
 step=-step;
 malla.position.x+=step;
 }
