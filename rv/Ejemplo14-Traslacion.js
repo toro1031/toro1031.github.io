@@ -13,7 +13,7 @@ document.body.appendChild(renderizador.domElement);
 var loop = function(){
 requestAnimationFrame(loop);
 renderizador.render(escena, camara);
-translate(x,0,0);
+malla.xtranslate(step);
 if(Math.abs(malla.position.x)>5)
 step=-step;
 malla.position.x+=step;
