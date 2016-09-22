@@ -1,5 +1,5 @@
 function init(p){
-var malla = new THREE.Mesh(new THREE.BoxGeometry(p, p, p), new THREE.MeshNormalMaterial());
+malla = new THREE.Mesh(new THREE.BoxGeometry(p, p, p), new THREE.MeshNormalMaterial());
 escena = new THREE.Scene();
 escena.add(malla);
 camara = new THREE.PerspectiveCamera();
@@ -9,11 +9,13 @@ renderizador.setSize(700,700);
 document.body.appendChild(renderizador.domElement);
 }
 
-var main = function(p){
-p(1);
+var loop = function(){
+requestAnimationFrame(loop);
 renderizador.render(escena, camara);
+malla.rotateY(0.01);
 }
 
-var escena, camara, renderizador;
+var escena, camara, renderizador, malla;
 
-main(init);
+init(1);
+loop();
