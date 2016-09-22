@@ -3,6 +3,7 @@ var malla = new THREE.Mesh(new THREE.BoxGeometry(p, p, p), new THREE.MeshNormalM
 escena = new THREE.Scene();
 escena.add(malla);
 camara = new THREE.PerspectiveCamera();
+camara.position.z = 5;
 renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(700,700);
 document.body.appendChild(renderizador.domElement);
