@@ -40,6 +40,6 @@ CONSTRUCTOR.loop = function(){
 }
 
 CONSTRUCTOR.setup();
-CONSTRUCTOR.loop();
+CONSTRUCTOR.loop(); 
   
     
