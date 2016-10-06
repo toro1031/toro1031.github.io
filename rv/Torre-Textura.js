@@ -44,7 +44,7 @@ torreForma.merge(torreMalla4.geometry, torreMalla4.matrix);
 torreForma.merge(torreMalla5.geometry, torreMalla5.matrix);
 torreForma.merge(torreMalla6.geometry, torreMalla6.matrix);
 
-var material = new THREE.MeshNormalMaterial( {map: textura} );
+var material = new THREE.MeshBasicMaterial( {map: textura} );
 TEXTURA.malla = new THREE.Mesh(torreForma, material);
 TEXTURA.malla.rotateX(Math.PI/8);
 TEXTURA.malla.rotateY(Math.PI/6);
