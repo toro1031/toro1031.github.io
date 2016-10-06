@@ -3,10 +3,18 @@ TEXTURA1.retrollamada = function( textura ) {
   TEXTURA1.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 
+var TEXTURA2= new Object();
+TEXTURA2.retrollamada = function( textura ) {
+  TEXTURA2.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
+
+
 function setup1() {
   escena = new THREE.Scene();
   var cargador = new THREE.TextureLoader();
-  cargador.load("marmol_negro.jpg", TEXTURA1.retrollamada);
+  cargador.load("marmoln.jpg", TEXTURA1.retrollamada);
+ var cargador2 = new THREE.TextureLoader();
+  cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
 }
   
 function setup2() {
@@ -58,7 +66,8 @@ function setup2() {
 
   var gris = new THREE.MeshLambertMaterial( { color: 0x151515 } );
   var blanco = new THREE.MeshLambertMaterial( { color: 0xFFFFFF });
-  var torre2 = new THREE.Mesh(torreForma, gris);
+  
+  var torre2 = new THREE.Mesh( torreForma, TEXTURA2.material );
   torre2.position.x=70;
   torre2.position.y=2;
   var torre3 = new THREE.Mesh(torreForma, blanco);
@@ -156,7 +165,7 @@ function setup2() {
 
 function loop(){
   requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
     setup2();
   }
 }
