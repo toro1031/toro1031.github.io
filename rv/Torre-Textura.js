@@ -62,7 +62,7 @@ TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inn
 TEXTURA.camara.position.z = 50;
 TEXTURA.camara.position.y = 7;
 
-Var lienzo = document.getElementById("Ejemplo16-textura");
+var lienzo = document.getElementById("Torre-Textura");
 TEXTURA.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true});
   
 TEXTURA.renderizador.setSize( 600, 600 );
