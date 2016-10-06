@@ -54,7 +54,7 @@ TEXTURA.escena.add(TEXTURA.malla);
 
 TEXTURA.setup = function() {
 
-TEXTURA.malla.position.y=2;
+TEXTURA.malla.position.y = 2;
 TEXTURA.escena = new THREE.Scene();
 
 var cargador = new THREE.TextureLoader();
