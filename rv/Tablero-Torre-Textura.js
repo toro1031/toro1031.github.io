@@ -13,10 +13,10 @@ TEXTURA3.retrollamada = function( textura ) {
 TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 
-//var TEXTURA4= new Object();
-//TEXTURA4.retrollamada = function( textura ) {
-//  TEXTURA4.material = new THREE.MeshBasicMaterial( {map: textura} );
-//}
+var TEXTURA4= new Object();
+TEXTURA4.retrollamada = function( textura ) {
+TEXTURA4.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
 
 
 function setup1() {
@@ -27,8 +27,8 @@ function setup1() {
   cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
   var cargador3 = new THREE.TextureLoader();
   cargador3.load("marmolv.jpg", TEXTURA3.retrollamada);
- // var cargador4 = new THREE.TextureLoader();
- // cargador4.load("marmolv.jpg", TEXTURA4.retrollamada);
+  var cargador4 = new THREE.TextureLoader();
+  cargador4.load("marmolr.JPG", TEXTURA4.retrollamada);
 }
   
 function setup2() {
@@ -83,7 +83,7 @@ function setup2() {
   torre3.position.x=70;
   torre3.position.y=2;
   torre3.position.z=70;
-  var torre4 = new THREE.Mesh(torreForma, TEXTURA3.material );
+  var torre4 = new THREE.Mesh(torreForma, TEXTURA4.material );
   torre4.position.y=2;
   torre4.position.z=70;
   escena.add(torre1);  
@@ -178,7 +178,7 @@ function setup2() {
 
 function loop(){
   requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && TEXTURA3.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && TEXTURA3.material !== undefined && TEXTURA4.material !== undefined && !setupDone){
     setup2();
   }
 }
