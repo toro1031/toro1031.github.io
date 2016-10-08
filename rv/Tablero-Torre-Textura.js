@@ -1,21 +1,21 @@
 var TEXTURA1 = new Object();
 TEXTURA1.retrollamada = function( textura ) {
-  TEXTURA1.material = new THREE.MeshBasicMaterial( {map: textura} );
+  TEXTURA1.material = new THREE.MeshLambertMaterial( {map: textura} );
 }
 
 var TEXTURA2= new Object();
 TEXTURA2.retrollamada = function( textura ) {
-  TEXTURA2.material = new THREE.MeshBasicMaterial( {map: textura} );
+  TEXTURA2.material = new THREE.MeshLambertMaterial( {map: textura} );
 }
 
 var TEXTURA3= new Object();
 TEXTURA3.retrollamada = function( textura ) {
-TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
+TEXTURA3.material = new THREE.MeshLambertMaterial( {map: textura} );
 }
 
 var TEXTURA4= new Object();
 TEXTURA4.retrollamada = function( textura ) {
-TEXTURA4.material = new THREE.MeshBasicMaterial( {map: textura} );
+TEXTURA4.material = new THREE.MeshLambertMaterial( {map: textura} );
 }
 
 
