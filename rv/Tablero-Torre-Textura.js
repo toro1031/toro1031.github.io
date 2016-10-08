@@ -8,10 +8,10 @@ TEXTURA2.retrollamada = function( textura ) {
   TEXTURA2.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 
-//var TEXTURA3= new Object();
-//TEXTURA3.retrollamada = function( textura ) {
- // TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
-//}
+var TEXTURA3= new Object();
+TEXTURA3.retrollamada = function( textura ) {
+TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
 
 //var TEXTURA4= new Object();
 //TEXTURA4.retrollamada = function( textura ) {
@@ -23,10 +23,10 @@ function setup1() {
   escena = new THREE.Scene();
   var cargador = new THREE.TextureLoader();
   cargador.load("marmoln.jpg", TEXTURA1.retrollamada);
- var cargador2 = new THREE.TextureLoader();
+  var cargador2 = new THREE.TextureLoader();
   cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
- // var cargador3 = new THREE.TextureLoader();
- // cargador3.load("marmolr.jpg", TEXTURA3.retrollamada);
+  var cargador3 = new THREE.TextureLoader();
+  cargador3.load("marmolv.jpg", TEXTURA3.retrollamada);
  // var cargador4 = new THREE.TextureLoader();
  // cargador4.load("marmolv.jpg", TEXTURA4.retrollamada);
 }
@@ -76,17 +76,17 @@ function setup2() {
   torreForma.merge(torreMalla6.geometry, torreMalla6.matrix);
   
   var torre1 = new THREE.Mesh( torreForma, TEXTURA1.material );
-  escena.add(torre1);  
   var torre2 = new THREE.Mesh( torreForma, TEXTURA2.material );
   torre2.position.x=70;
   torre2.position.y=2;
-  var torre3 = new THREE.Mesh(torreForma, TEXTURA1.material );
+  var torre3 = new THREE.Mesh(torreForma, TEXTURA3.material );
   torre3.position.x=70;
   torre3.position.y=2;
   torre3.position.z=70;
-  var torre4 = new THREE.Mesh(torreForma, TEXTURA2.material );
+  var torre4 = new THREE.Mesh(torreForma, TEXTURA3.material );
   torre4.position.y=2;
   torre4.position.z=70;
+  escena.add(torre1);  
   escena.add(torre2);
   escena.add(torre3);
   escena.add(torre4);
@@ -178,7 +178,7 @@ function setup2() {
 
 function loop(){
   requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && TEXTURA3.material !== undefined && !setupDone){
     setup2();
   }
 }
