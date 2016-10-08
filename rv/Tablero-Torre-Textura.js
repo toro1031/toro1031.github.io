@@ -8,6 +8,16 @@ TEXTURA2.retrollamada = function( textura ) {
   TEXTURA2.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 
+var TEXTURA3= new Object();
+TEXTURA3.retrollamada = function( textura ) {
+  TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
+
+var TEXTURA4= new Object();
+TEXTURA4.retrollamada = function( textura ) {
+  TEXTURA4.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
+
 
 function setup1() {
   escena = new THREE.Scene();
@@ -15,6 +25,10 @@ function setup1() {
   cargador.load("marmoln.jpg", TEXTURA1.retrollamada);
  var cargador2 = new THREE.TextureLoader();
   cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
+  var cargador3 = new THREE.TextureLoader();
+  cargador3.load("marmolr.jpg", TEXTURA3.retrollamada);
+  var cargador4 = new THREE.TextureLoader();
+  cargador4.load("marmolv.jpg", TEXTURA4.retrollamada);
 }
   
 function setup2() {
@@ -62,25 +76,24 @@ function setup2() {
   torreForma.merge(torreMalla6.geometry, torreMalla6.matrix);
   
   var torre1 = new THREE.Mesh( torreForma, TEXTURA1.material );
-  escena.add(torre1);
-
-  var gris = new THREE.MeshLambertMaterial( { color: 0x151515 } );
-  var blanco = new THREE.MeshLambertMaterial( { color: 0xFFFFFF });
-  
+  escena.add(torre1);  
   var torre2 = new THREE.Mesh( torreForma, TEXTURA2.material );
   torre2.position.x=70;
   torre2.position.y=2;
-  var torre3 = new THREE.Mesh(torreForma, blanco);
+  var torre3 = new THREE.Mesh(torreForma, TEXTURA3.material );
   torre3.position.x=70;
   torre3.position.y=2;
   torre3.position.z=70;
-  var torre4 = new THREE.Mesh(torreForma, blanco);
+  var torre4 = new THREE.Mesh(torreForma, TEXTURA4.material );
   torre4.position.y=2;
   torre4.position.z=70;
   escena.add(torre2);
   escena.add(torre3);
   escena.add(torre4);
 
+  var gris = new THREE.MeshLambertMaterial( { color: 0x151515 } );
+  var blanco = new THREE.MeshLambertMaterial( { color: 0xFFFFFF });
+  
   // Formar tablero:
   var cuadros = [new THREE.BoxGeometry( 10, 2, 10 ) ];
   var cuadroMallas = [new THREE.Mesh(cuadros[0],gris)];
@@ -165,7 +178,7 @@ function setup2() {
 
 function loop(){
   requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && TEXTURA3.material !== undefined && TEXTURA4.material !== undefined && !setupDone){
     setup2();
   }
 }
