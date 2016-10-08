@@ -186,4 +186,4 @@ function loop(){
 var setupDone = false;
 var escena, camara, renderizador;
 setup1();
-loop();
+loop(); 
