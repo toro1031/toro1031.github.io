@@ -88,17 +88,23 @@ TORRE.TorreGeometry = function(){
     var lienzo = document.getElementById("Tablero-Constructores");
     TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
     TORRE.renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
+    TORRE.renderizador.render( TORRE.escena, TORRE.camara );
     TORRE.escena = new THREE.Scene();
     TORRE.escena.add(torre1);
     TORRE.escena.add(torre2);
     TORRE.escena.add(torre3);
     TORRE.escena.add(torre4);
+    
+    setupDone = true;
 }
 
 TORRE.loop = function(){
   requestAnimationFrame(TORRE.loop);
-  TORRE.renderizador.render( TORRE.escena, TORRE.camara );
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+    TORRE.setup();
+  }
 }
 
-TORRE.setup();
+var setupDone = false;
+setup1();
 TORRE.loop();
