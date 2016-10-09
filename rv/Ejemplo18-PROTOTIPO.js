@@ -51,6 +51,7 @@ PROTOTIPO.loop = function(){
 }
 
 var material;
+TEXTURA.setup();
 PROTOTIPO.setup();
 PROTOTIPO.loop();
   
