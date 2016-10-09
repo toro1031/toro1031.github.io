@@ -1,14 +1,3 @@
-var TEXTURA = new Object();
-
-TEXTURA.retrollamada = function( textura ) {
-  material = new THREE.MeshBasicMaterial( {map: textura} );
-  }
-
-TEXTURA.setup = function() {
-  var cargador = new THREE.TextureLoader();
-  cargador.load("earth_atmos_2048.jpg", TEXTURA.retrollamada);
-  }
-
 var PROTOTIPO = new Object();
 
 PROTOTIPO.ArbolGeometry = function(){
@@ -28,8 +17,8 @@ PROTOTIPO.ArbolGeometry = function(){
 PROTOTIPO.ArbolGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.setup = function(){
-  var arbol1 = new THREE.Mesh(new PROTOTIPO.ArbolGeometry(), material );
-  var arbol2 = new THREE.Mesh(new PROTOTIPO.ArbolGeometry(), material );
+  var arbol1 = new THREE.Mesh(new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial());
+  var arbol2 = new THREE.Mesh(new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial());
   
   arbol1.position.x = -5;
   arbol2.position.x = 5;
@@ -43,19 +32,12 @@ PROTOTIPO.setup = function(){
   PROTOTIPO.escena = new THREE.Scene();
   PROTOTIPO.escena.add(arbol1);
   PROTOTIPO.escena.add(arbol2);
-  setupDone = true;
 }
 
 PROTOTIPO.loop = function(){
   requestAnimationFrame( PROTOTIPO.loop);
-  if ( TEXTURA.setup !== undefined && !setupDone ) {
-  }
   PROTOTIPO.renderizador.render( PROTOTIPO.escena, PROTOTIPO.camara );
 }
 
-setupDone = false;
-var material;
-TEXTURA.setup();
 PROTOTIPO.setup();
 PROTOTIPO.loop();
-  
