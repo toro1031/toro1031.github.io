@@ -88,7 +88,7 @@ TORRE.TorreGeometry = function(){
     var lienzo = document.getElementById("Tablero-Constructores");
     TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
     TORRE.renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
-    TORRE.renderizador.render( escena, camara );
+    TORRE.renderizador.render( TORRE.escena, TORRE.camara );
     TORRE.escena = new THREE.Scene();
     TORRE.escena.add(torre1);
     TORRE.escena.add(torre2);
