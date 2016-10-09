@@ -95,7 +95,7 @@ TORRE.TorreGeometry = function(){
     TORRE.escena.add(torre3);
     TORRE.escena.add(torre4);
     
-    setupDone = true;
+    //setupDone = true;
 }
 
 TORRE.loop = function(){
@@ -105,6 +105,6 @@ TORRE.loop = function(){
   }
 }
 
-var setupDone = false;
+//var setupDone = false;
 setup1();
 TORRE.loop();
