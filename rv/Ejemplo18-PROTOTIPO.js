@@ -43,13 +43,17 @@ PROTOTIPO.setup = function(){
   PROTOTIPO.escena = new THREE.Scene();
   PROTOTIPO.escena.add(arbol1);
   PROTOTIPO.escena.add(arbol2);
+  setupDone = true;
 }
 
 PROTOTIPO.loop = function(){
   requestAnimationFrame( PROTOTIPO.loop);
+  if ( TEXTURA.setup !== undefined && !setupDone ) {
+  }
   PROTOTIPO.renderizador.render( PROTOTIPO.escena, PROTOTIPO.camara );
 }
 
+setupDone = false;
 var material;
 TEXTURA.setup();
 PROTOTIPO.setup();
