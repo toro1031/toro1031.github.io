@@ -101,11 +101,11 @@ TORRE.TorreGeometry = function(){
 function loop(){
   requestAnimationFrame(loop);
   if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
-    TORRE.setup();
+   setup1();
   }
 }
 
 var setupDone = false;
 var escena, camara, renderizador;
-setup1();
+TORRE.Setup();
 loop();
