@@ -1,9 +1,9 @@
-var TEXTURA1 = new Object();
+TEXTURA1 = new Object();
 TEXTURA1.retrollamada = function( textura ) {
   TEXTURA1.material = new THREE.MeshNormalMaterial( {map: textura} );
 }
 
-var TEXTURA2= new Object();
+TEXTURA2= new Object();
 TEXTURA2.retrollamada = function( textura ) {
   TEXTURA2.material = new THREE.MeshNormalMaterial( {map: textura} );
 }
@@ -16,7 +16,7 @@ function setup1() {
   cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
 }
 
-var TORRE = new Object();
+TORRE = new Object();
 
 TORRE.TorreGeometry = function(){
   THREE.Geometry.call(this);
