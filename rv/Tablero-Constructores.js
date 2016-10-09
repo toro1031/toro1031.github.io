@@ -55,9 +55,11 @@ TORRE.TorreGeometry = function(){
     torre1.position.x = 5;
     torre2.position.x = -5;
     
-    TORRE.camara = new THREE.PerspectiveCamera();
-    TORRE.camara.position.z = 70; 
-  
+    var centro = new THREE.Vector3(40, 0, 40);
+    TORRE.camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
+    TORRE.camara.position.set(40, 80, 150);
+    TORRE.camara.lookAt(centro);
+   
     var lienzo = document.getElementById("Tablero-Constructores");
     TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
     TORRE.renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
