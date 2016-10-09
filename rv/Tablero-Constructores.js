@@ -101,4 +101,5 @@ TORRE.loop = function(){
 }
 
 setup1();
+TORRE.setup();
 TORRE.loop();
