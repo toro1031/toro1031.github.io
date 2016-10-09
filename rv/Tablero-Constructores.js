@@ -56,7 +56,7 @@ TORRE.TorreGeometry = function(){
     torre2.position.x = -5;
     
     TORRE.camara = new THREE.PerspectiveCamera();
-    TORRE.camara.position.z = 20; 
+    TORRE.camara.position.z = 70; 
   
     var lienzo = document.getElementById("Tablero-Constructores");
     TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
