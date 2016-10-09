@@ -107,5 +107,5 @@ function loop(){
 
 var setupDone = false;
 var escena, camara, renderizador;
-TORRE.Setup();
+TORRE.setup();
 loop();
