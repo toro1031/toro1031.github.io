@@ -100,7 +100,7 @@ TORRE.TorreGeometry = function(){
 
 TORRE.loop = function(){
   requestAnimationFrame(TORRE.loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined){
     TORRE.setup();
   }
 }
