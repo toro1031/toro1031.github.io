@@ -81,31 +81,25 @@ TORRE.TorreGeometry = function(){
     torre4.position.z=70;
     
     var centro = new THREE.Vector3(40, 0, 40);
-    camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
-    camara.position.set(40, 80, 150);
-    camara.lookAt(centro);
+    TORRE.camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
+    TORRE.camara.position.set(40, 80, 150);
+    TORRE.camara.lookAt(centro);
    
     var lienzo = document.getElementById("Tablero-Constructores");
-    renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
-    renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
-    renderizador.render( escena, camara );
-    //TORRE.escena = new THREE.Scene();
-    escena.add(torre1);
-    escena.add(torre2);
-    escena.add(torre3);
-    escena.add(torre4);
-    
-    setupDone = true;
+    TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
+    TORRE.renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
+    TORRE.renderizador.render( escena, camara );
+    TORRE.escena = new THREE.Scene();
+    TORRE.escena.add(torre1);
+    TORRE.escena.add(torre2);
+    TORRE.escena.add(torre3);
+    TORRE.escena.add(torre4);
 }
 
-function loop(){
-  requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
-   setup1();
-  }
+TORRE.loop = function(){
+  requestAnimationFrame(TORRE.loop);
+  TORRE.renderizador.render( TORRE.escena, TORRE.camara );
 }
 
-var setupDone = false;
-var escena, camara, renderizador;
 TORRE.setup();
-loop();
+TORRE.loop();
