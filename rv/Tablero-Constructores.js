@@ -92,7 +92,7 @@ TORRE.TorreGeometry = function(){
     escena.add(torre1);
     escena.add(torre2);
     escena.add(torre3);
-    TORRE.escena.add(torre4);
+    escena.add(torre4);
 }
 
 loop = function(){
