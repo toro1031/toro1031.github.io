@@ -95,16 +95,6 @@ TORRE.TorreGeometry = function(){
     TORRE.escena.add(torre4);
 }
 
-TORRE.loop = function(){
-  requestAnimationFrame(TORRE.loop);
-  TORRE.renderizador.render( TORRE.escena, TORRE.camara );
-  setup1();
-}
-
-PEON.setup();
-TORRE.setup();
-TORRE.loop();
-
 PEON = new Object();
 
 PEON.PeonGeometry = function(){
@@ -147,4 +137,13 @@ PEON.setup = function(){
   TORRE.escena.add(peon1);
 }
 
+TORRE.loop = function(){
+  requestAnimationFrame(TORRE.loop);
+  TORRE.renderizador.render( TORRE.escena, TORRE.camara );
+  setup1();
+}
+
+PEON.setup();
+TORRE.setup();
+TORRE.loop();
 
