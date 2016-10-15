@@ -124,31 +124,63 @@ PEON.setup = function(){
   peon6 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
   peon7 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
   peon8 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon9 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon10 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon11 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon12 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon13 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon14 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon15 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon16 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
   
-  peon1.position.x=10;
+  peon1.position.x=0;
   peon1.position.y=2;
   peon1.position.z=60;
-  peon2.position.x=20;
+  peon2.position.x=10;
   peon2.position.y=2;
   peon2.position.z=60;
-  peon3.position.x=30;
+  peon3.position.x=20;
   peon3.position.y=2;
   peon3.position.z=60;
-  peon4.position.x=40;
+  peon4.position.x=30;
   peon4.position.y=2;
   peon4.position.z=60;  
-  peon5.position.x=50;
+  peon5.position.x=40;
   peon5.position.y=2;
   peon5.position.z=60;
-  peon6.position.x=60;
+  peon6.position.x=50;
   peon6.position.y=2;
   peon6.position.z=60;
-  peon7.position.x=70;
+  peon7.position.x=60;
   peon7.position.y=2;
   peon7.position.z=60;
-  peon8.position.x=80;
+  peon8.position.x=70;
   peon8.position.y=2;
   peon8.position.z=60;
+  peon9.position.x=0;
+  peon9.position.y=2;
+  peon9.position.z=10;
+  peon10.position.x=10;
+  peon10.position.y=2;
+  peon10.position.z=10;
+  peon11.position.x=20;
+  peon11.position.y=2;
+  peon11.position.z=10;
+  peon12.position.x=30;
+  peon12.position.y=2;
+  peon12.position.z=10;  
+  peon13.position.x=40;
+  peon13.position.y=2;
+  peon13.position.z=10;
+  peon14.position.x=50;
+  peon14.position.y=2;
+  peon14.position.z=10;
+  peon15.position.x=60;
+  peon15.position.y=2;
+  peon15.position.z=10;
+  peon16.position.x=70;
+  peon16.position.y=2;
+  peon16.position.z=10;
 }
 
 ALFIL = new Object();
@@ -205,10 +237,10 @@ ALFIL.setup = function(){
   alfil2.position.z=70;
   alfil3.position.x=50;
   alfil3.position.y=2;
-  alfil3.position.z=10;
+  alfil3.position.z=0;
   alfil4.position.x=20;
   alfil4.position.y=2;
-  alfil4.position.z=10;
+  alfil4.position.z=0;
 }
   
 function setup(){
@@ -296,6 +328,14 @@ function setup(){
     escena.add(peon6);
     escena.add(peon7);
     escena.add(peon8);
+    escena.add(peon9);
+    escena.add(peon10);
+    escena.add(peon11);
+    escena.add(peon12);
+    escena.add(peon13);
+    escena.add(peon14);
+    escena.add(peon15);
+    escena.add(peon16);
     escena.add(alfil1);
     escena.add(alfil2);
     escena.add(alfil3);
@@ -319,7 +359,7 @@ loop = function(){
 var setupDone = false;
 var escena, camara, renderizador;
 var torre1, torre2, torre3, torre4;
-var peon1, peon2, peon3, peon4, peon5, peon6, peon7, peon8;
+var peon1, peon2, peon3, peon4, peon5, peon6, peon7, peon8, peon9, peon10, peon11, peon12, peon13, peon14, peon15, peon16;
 var alfil1, alfil2, alfil3, alfil4;
 
 setup1();
