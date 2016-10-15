@@ -98,8 +98,8 @@ TORRE.TorreGeometry = function(){
 TORRE.loop = function(){
   requestAnimationFrame(TORRE.loop);
   TORRE.renderizador.render( TORRE.escena, TORRE.camara );
+  setup1();
 }
 
-setup1();
 TORRE.setup();
 TORRE.loop();
