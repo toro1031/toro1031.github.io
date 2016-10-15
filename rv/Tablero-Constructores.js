@@ -122,18 +122,66 @@ PEON.setup = function(){
   peon1.position.z=60;
 }
 
+ALFIL = new Object();
+
+ALFIL.AlfilGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosAlfil = [];
+  puntosAlfil.push( new THREE.Vector2( 0, 0 ) );
+  puntosAlfil.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosAlfil.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 10 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 10 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 12 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 13.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 1.5, 13.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 15 ) );
+  puntosAlfil.push( new THREE.Vector2( 0, 15 ) );
+  var alfilForma1 = new THREE.LatheGeometry(puntosAlfil);
+  var alfilMalla1 = new THREE.Mesh(alfilForma1);
+  
+  var alfilForma2 = new THREE.ConeGeometry( 2.5, 4 );
+  alfilForma2.translate(0,17,0);
+  var alfilMalla2 = new THREE.Mesh(alfilForma2);
+  
+  var alfilForma3= new THREE.SphereGeometry( 1 );
+  alfilForma3.translate(0,18.75,0);
+  var alfilMalla3 = new THREE.Mesh(alfilForma3);
+
+  // Juntar mallas de alfil:
+  var alfilForma = new THREE.Geometry();
+  this.merge(alfilMalla1.geometry, alfilMalla1.matrix);
+  this.merge(alfilMalla2.geometry, alfilMalla2.matrix);
+  this.merge(alfilMalla3.geometry, alfilMalla3.matrix);
+}
+
+ALFIL.AlfilGeometry.prototype = new THREE.Geometry();
+
+ALFIL.setup = function(){
+  alfil1 = new THREE.Mesh(new ALFIL.AlfilGeometry(), TEXTURA1.Material);
+  alfil1.position.x=50;
+  alfil1.position.y=2;
+  alfil1.position.z=70;
+}
+  
 function setup(){
     var centro = new THREE.Vector3(40, 0, 40);
     camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
     camara.position.set(40, 80, 150);
     camara.lookAt(centro);
    
-    escena = new THREE.Scene();
+    //escena = new THREE.Scene();
     escena.add(torre1);
     escena.add(torre2);
     escena.add(torre3);
     escena.add(torre4);
     escena.add(peon1);
+    escena.add(alfil1);
   
     var lienzo = document.getElementById("Tablero-Constructores");
     renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
@@ -154,7 +202,10 @@ var setupDone = false;
 var escena, camara, renderizador;
 var torre1, torre2, torre3, torre4;
 var peon1;
+var alfil1;
+
 setup1();
+ALFIL.setup();
 PEON.setup();
 TORRE.setup();
 loop();
