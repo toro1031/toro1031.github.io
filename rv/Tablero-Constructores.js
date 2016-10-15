@@ -67,10 +67,10 @@ TORRE.TorreGeometry = function(){
   TORRE.TorreGeometry.prototype = new THREE.Geometry();
   
   TORRE.setup = function(){
-    var torre1 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA1.Material);
-    var torre2 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA1.Material);
-    var torre3 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA2.Material);
-    var torre4 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA2.Material);
+     torre1 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA1.Material);
+     torre2 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA1.Material);
+     torre3 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA2.Material);
+     torre4 = new THREE.Mesh(new TORRE.TorreGeometry(), TEXTURA2.Material);
     
     torre2.position.x=70;
     torre2.position.y=2;
@@ -79,27 +79,13 @@ TORRE.TorreGeometry = function(){
     torre3.position.z=70;
     torre4.position.y=2;
     torre4.position.z=70;
-    
-    var centro = new THREE.Vector3(40, 0, 40);
-    TORRE.camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
-    TORRE.camara.position.set(40, 80, 150);
-    TORRE.camara.lookAt(centro);
-   
-    var lienzo = document.getElementById("Tablero-Constructores");
-    TORRE.renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
-    TORRE.renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
-    TORRE.escena = new THREE.Scene();
-    TORRE.escena.add(torre1);
-    TORRE.escena.add(torre2);
-    TORRE.escena.add(torre3);
-    TORRE.escena.add(torre4);
-}
+  }
 
 PEON = new Object();
 
 PEON.PeonGeometry = function(){
   THREE.Geometry.call(this);
-// PEÓN
+
   var puntosPeon = [];
   puntosPeon.push( new THREE.Vector2( 0, 0 ) );
   puntosPeon.push( new THREE.Vector2( 4.5, 0 ) );
@@ -113,6 +99,7 @@ PEON.PeonGeometry = function(){
   puntosPeon.push( new THREE.Vector2( 2, 9.5 ) );
   puntosPeon.push( new THREE.Vector2( 2, 11 ) );
   puntosPeon.push( new THREE.Vector2( 0, 11 ) );
+  
   var peonForma1 = new THREE.LatheGeometry(puntosPeon);
   var peonMalla1 = new THREE.Mesh(peonForma1);
   
@@ -122,28 +109,53 @@ PEON.PeonGeometry = function(){
 
   // Juntar mallas de peon:
   var peonForma = new THREE.Geometry();
-  peonForma.merge(peonMalla1.geometry, peonMalla1.matrix);
-  peonForma.merge(peonMalla2.geometry, peonMalla2.matrix);
+  this.merge(peonMalla1.geometry, peonMalla1.matrix);
+  this.merge(peonMalla2.geometry, peonMalla2.matrix);
 }
 
 PEON.PeonGeometry.prototype = new THREE.Geometry();
 
 PEON.setup = function(){
-  // Crear peones:
-  var peon1 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon1 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
   peon1.position.x=20;
   peon1.position.y=2;
   peon1.position.z=60;
-  TORRE.escena.add(peon1);
 }
 
-TORRE.loop = function(){
-  requestAnimationFrame(TORRE.loop);
-  TORRE.renderizador.render( TORRE.escena, TORRE.camara );
-  setup1();
+function setup(){
+    var centro = new THREE.Vector3(40, 0, 40);
+    camara = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000);
+    camara.position.set(40, 80, 150);
+    camara.lookAt(centro);
+   
+    escena = new THREE.Scene();
+    escena.add(torre1);
+    escena.add(torre2);
+    escena.add(torre3);
+    escena.add(torre4);
+    escena.add(peon1);
+  
+    var lienzo = document.getElementById("Tablero-Constructores");
+    renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
+    renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95);
+    renderizador.render( escena, camara );
+  
+    setupDone = true;
 }
 
+loop = function(){
+  requestAnimationFrame(loop);
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  setup();
+  }
+}
+
+var setupDone = false;
+var escena, camara, renderizador;
+var torre1, torre2, torre3, torre4;
+var peon1;
+setup1();
 PEON.setup();
 TORRE.setup();
-TORRE.loop();
+loop();
 
