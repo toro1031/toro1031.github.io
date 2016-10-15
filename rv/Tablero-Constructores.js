@@ -101,5 +101,50 @@ TORRE.loop = function(){
   setup1();
 }
 
+PEON.setup();
 TORRE.setup();
 TORRE.loop();
+
+PEON = new Object();
+
+PEON.PeonGeometry = function(){
+  THREE.Geometry.call(this);
+// PEÓN
+  var puntosPeon = [];
+  puntosPeon.push( new THREE.Vector2( 0, 0 ) );
+  puntosPeon.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosPeon.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosPeon.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosPeon.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosPeon.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 8 ) );
+  puntosPeon.push( new THREE.Vector2( 2.5, 8 ) );
+  puntosPeon.push( new THREE.Vector2( 2.5, 9.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 9.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 11 ) );
+  puntosPeon.push( new THREE.Vector2( 0, 11 ) );
+  var peonForma1 = new THREE.LatheGeometry(puntosPeon);
+  var peonMalla1 = new THREE.Mesh(peonForma1);
+  
+  var peonForma2 = new THREE.SphereGeometry( 3 );
+  peonForma2.translate(0,12.5,0);
+  var peonMalla2 = new THREE.Mesh(peonForma2);
+
+  // Juntar mallas de peon:
+  var peonForma = new THREE.Geometry();
+  peonForma.merge(peonMalla1.geometry, peonMalla1.matrix);
+  peonForma.merge(peonMalla2.geometry, peonMalla2.matrix);
+}
+
+PEON.PeonGeometry.prototype = new THREE.Geometry();
+
+PEON.setup = function(){
+  // Crear peones:
+  var peon1 = new THREE.Mesh(new PEON.PeonGeometry(), TEXTURA1.Material);
+  peon1.position.x=20;
+  peon1.position.y=2;
+  peon1.position.z=60;
+  TORRE.escena.add(peon1);
+}
+
+
