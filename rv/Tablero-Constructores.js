@@ -164,9 +164,22 @@ ALFIL.AlfilGeometry.prototype = new THREE.Geometry();
 
 ALFIL.setup = function(){
   alfil1 = new THREE.Mesh(new ALFIL.AlfilGeometry(), TEXTURA1.Material);
+  alfil2 = new THREE.Mesh(new ALFIL.AlfilGeometry(), TEXTURA1.Material);
+  alfil3 = new THREE.Mesh(new ALFIL.AlfilGeometry(), TEXTURA1.Material);
+  alfil4 = new THREE.Mesh(new ALFIL.AlfilGeometry(), TEXTURA1.Material);
+  
   alfil1.position.x=50;
   alfil1.position.y=2;
   alfil1.position.z=70;
+  alfil2.position.x=20;
+  alfil2.position.y=2;
+  alfil2.position.z=70;
+  alfil3.position.x=50;
+  alfil3.position.y=2;
+  alfil3.position.z=20;
+  alfil4.position.x=20;
+  alfil4.position.y=2;
+  alfil4.position.z=20;
 }
   
 function setup(){
@@ -248,6 +261,7 @@ function setup(){
     escena.add(torre4);
     escena.add(peon1);
     escena.add(alfil1);
+    escena.add(alfil2);
   
     var lienzo = document.getElementById("Tablero-Constructores");
     renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
@@ -268,7 +282,7 @@ var setupDone = false;
 var escena, camara, renderizador;
 var torre1, torre2, torre3, torre4;
 var peon1;
-var alfil1;
+var alfil1, alfil2, alfil3, alfil4;
 
 setup1();
 ALFIL.setup();
