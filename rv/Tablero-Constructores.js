@@ -262,6 +262,8 @@ function setup(){
     escena.add(peon1);
     escena.add(alfil1);
     escena.add(alfil2);
+    escena.add(alfil3);
+    escena.add(alfil4);
   
     var lienzo = document.getElementById("Tablero-Constructores");
     renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
