@@ -352,6 +352,9 @@ function setup(){
 loop = function(){
   requestAnimationFrame(loop);
   if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  ALFIL.setup();
+  PEON.setup();
+  TORRE.setup();
   setup();
   }
 }
@@ -363,7 +366,4 @@ var peon1, peon2, peon3, peon4, peon5, peon6, peon7, peon8, peon9, peon10, peon1
 var alfil1, alfil2, alfil3, alfil4;
 
 setup1();
-ALFIL.setup();
-PEON.setup();
-TORRE.setup();
 loop(); 
