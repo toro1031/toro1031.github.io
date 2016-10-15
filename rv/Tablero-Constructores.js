@@ -134,8 +134,7 @@ PEON.setup = function(){
   peon1.position.x=20;
   peon1.position.y=2;
   peon1.position.z=60;
-  PEON.escena = new THREE.Scene();
-  PEON.escena.add(peon1);
+  TORRE.escena.add(peon1);
 }
 
 TORRE.loop = function(){
