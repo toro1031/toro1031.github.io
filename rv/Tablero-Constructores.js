@@ -67,10 +67,10 @@ TORRE.TorreGeometry = function(){
   TORRE.TorreGeometry.prototype = new THREE.Geometry();
   
   TORRE.setup = function(){
-     torre1 = new THREE.Mesh(new TORRE.TorreGeometry(), gris);
-     torre2 = new THREE.Mesh(new TORRE.TorreGeometry(), gris);
-     torre3 = new THREE.Mesh(new TORRE.TorreGeometry(), blanco);
-     torre4 = new THREE.Mesh(new TORRE.TorreGeometry(), blanco);
+     torre1 = new THREE.Mesh(new TORRE.TorreGeometry(), blanco);
+     torre2 = new THREE.Mesh(new TORRE.TorreGeometry(), blanco);
+     torre3 = new THREE.Mesh(new TORRE.TorreGeometry(), gris);
+     torre4 = new THREE.Mesh(new TORRE.TorreGeometry(), gris);
     
     torre2.position.x=70;
     torre2.position.y=2;
