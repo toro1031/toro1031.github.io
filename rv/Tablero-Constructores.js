@@ -244,7 +244,7 @@ ALFIL.setup = function(){
 }
   
 function setup(){
-  
+  escena = new THREE.Scene();
   // TABLERO:
   gris = new THREE.MeshLambertMaterial( { color: 0x151515} );
   blanco = new THREE.MeshLambertMaterial( { color: 0xFFFFFF} );
@@ -315,7 +315,6 @@ function setup(){
     camara.position.set(40, 80, 150);
     camara.lookAt(centro);
    
-    escena = new THREE.Scene();
     escena.add(torre1);
     escena.add(torre2);
     escena.add(torre3);
