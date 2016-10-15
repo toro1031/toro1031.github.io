@@ -326,5 +326,4 @@ setup1();
 ALFIL.setup();
 PEON.setup();
 TORRE.setup();
-loop();
-
+loop(); 
