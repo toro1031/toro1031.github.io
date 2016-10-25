@@ -74,7 +74,7 @@ function Pared( size, x=0, y=0){
   this.position.y = y;
 }
 
-Pared.prototype = new THRE.Object3D();
+Pared.prototype = new THREE.Object3D();
 
 function setup(){
   entorno = new Environment();
