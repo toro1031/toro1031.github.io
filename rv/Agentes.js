@@ -103,3 +103,6 @@ function loop(){
   entorno.act();
   renderer.render( entorno, camara );
 }
+
+setup();
+loop();
