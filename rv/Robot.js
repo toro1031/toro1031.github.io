@@ -102,7 +102,7 @@ Robot.prototype.act = function(environment){
     console.log('Unknown command');
 };
 
-Robot.prototype.operations = {};
+Robot.prototype.operations = {}; 
 
 Robot.protoype.operations.goStraight = function(robot, distance){
  if (distance === undefined)
