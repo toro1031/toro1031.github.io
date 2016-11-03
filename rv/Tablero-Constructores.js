@@ -256,10 +256,10 @@ function setup(){
       cuadros[counter] = new THREE.BoxGeometry( 10, 2, 10 );
       cuadros[counter].translate(j*10,0,i*10);
       if((counter+i) % 2 == 0){
-        cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],gris);
+        cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],TEXTURA2.material);
       }
       else {
-        cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],blanco);
+        cuadroMallas[counter] = new THREE.Mesh(cuadros[counter],TEXTURA1.material);
       }
       escena.add(cuadroMallas[counter]);
       counter++;
