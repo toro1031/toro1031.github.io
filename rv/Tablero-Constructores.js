@@ -8,12 +8,19 @@ TEXTURA2.retrollamada = function( textura ) {
   TEXTURA2.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 
+var TEXTURA3 = new Object();
+TEXTURA3.retrollamada = function( textura ) {
+  TEXTURA3.material = new THREE.MeshBasicMaterial( {map: textura} );
+}
+
 function setup1() {
   escena = new THREE.Scene();
   var cargador = new THREE.TextureLoader();
   cargador.load("marmoln.jpg", TEXTURA1.retrollamada);
   var cargador2 = new THREE.TextureLoader();
   cargador2.load("marmolb.jpg", TEXTURA2.retrollamada);
+  var cargador3 = new THREE.TextureLoader();
+  cargador3.load("madera.jpg", TEXTURA3.retrollamada);
 }
 
 TORRE = new Object();
@@ -271,23 +278,22 @@ function setup(){
   var marco2 = new THREE.BoxGeometry( 80, 5, 5);
   var marco3 = new THREE.BoxGeometry( 5, 5, 90);
   var marco4 = new THREE.BoxGeometry( 5, 5, 90);
-  var cafe = new THREE.MeshLambertMaterial( { color: 0x653909 } );
-  var marcomalla1 = new THREE.Mesh(marco1, cafe);
+  var marcomalla1 = new THREE.Mesh(marco1, TEXTURA3.material);
   marcomalla1.position.x=35;
   marcomalla1.position.y=3;
   marcomalla1.position.z=80;
   escena.add(marcomalla1);
-  var marcomalla2 = new THREE.Mesh(marco2, cafe);
+  var marcomalla2 = new THREE.Mesh(marco2, TEXTURA3.material);
   marcomalla2.position.x=35;
   marcomalla2.position.y=3;
   marcomalla2.position.z=-5;
   escena.add(marcomalla2);
-  var marcomalla3 = new THREE.Mesh(marco3, cafe);
+  var marcomalla3 = new THREE.Mesh(marco3, TEXTURA3.material);
   marcomalla3.position.x=-7;
   marcomalla3.position.y=3;
   marcomalla3.position.z=37.5;
   escena.add(marcomalla3);
-  var marcomalla4 = new THREE.Mesh(marco4, cafe);
+  var marcomalla4 = new THREE.Mesh(marco4, TEXTURA3.material);
   marcomalla4.position.x=77;
   marcomalla4.position.y=3;
   marcomalla4.position.z=37.5;
@@ -350,7 +356,7 @@ function setup(){
 
 loop = function(){
   requestAnimationFrame(loop);
-  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && !setupDone){
+  if (TEXTURA1.material !== undefined && TEXTURA2.material !== undefined && TEXTURA3.material !== undefined && !setupDone){
   ALFIL.setup();
   PEON.setup();
   TORRE.setup();
