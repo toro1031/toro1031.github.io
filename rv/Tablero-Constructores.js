@@ -291,8 +291,8 @@ REINA.ReinaGeometry = function(){
 REINA.ReinaGeometry.prototype = new THREE.Geometry();
 
 REINA.setup = function(){
-  reina1 = new THREE.Mesh(new REINA.ReinaGeometry(), TEXTURA1.material);
-  reina2 = new THREE.Mesh(new REINA.ReinaGeometry(), TEXTURA2.material);
+  reina1 = new THREE.Mesh(new REINA.ReinaGeometry(), TEXTURA2.material);
+  reina2 = new THREE.Mesh(new REINA.ReinaGeometry(), TEXTURA1.material);
   
   reina1.position.x=30;
   reina1.position.y=2;
@@ -349,8 +349,8 @@ REY.ReyGeometry = function(){
 REY.ReyGeometry.prototype = new THREE.Geometry();
 
 REY.setup = function(){
-  rey1 = new THREE.Mesh(new REY.ReyGeometry(), TEXTURA1.material);
-  rey2 = new THREE.Mesh(new REY.ReyGeometry(), TEXTURA2.material);
+  rey1 = new THREE.Mesh(new REY.ReyGeometry(), TEXTURA2.material);
+  rey2 = new THREE.Mesh(new REY.ReyGeometry(), TEXTURA1.material);
   
   rey1.position.x=40;
   rey1.position.y=2;
@@ -411,10 +411,10 @@ CABALLO.CaballoGeometry = function(){
 CABALLO.CaballoGeometry.prototype = new THREE.Geometry();
 
 CABALLO.setup = function(){
-  caballo1 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA1.material);
-  caballo2 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA1.material);
-  caballo3 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA2.material);
-  caballo4 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA2.material);
+  caballo1 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA2.material);
+  caballo2 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA2.material);
+  caballo3 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA1.material);
+  caballo4 = new THREE.Mesh(new CABALLO.CaballoGeometry(), TEXTURA1.material);
   
   caballo1.position.x=10;
   caballo1.position.y=2;
