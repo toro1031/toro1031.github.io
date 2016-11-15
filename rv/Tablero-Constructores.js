@@ -249,6 +249,188 @@ ALFIL.setup = function(){
   alfil4.position.y=2;
   alfil4.position.z=0;
 }
+
+REINA = new Object();
+
+REINA.ReinaGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosReina = [];
+  puntosReina.push( new THREE.Vector2( 0, 0 ) );
+  puntosReina.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosReina.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosReina.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosReina.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosReina.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosReina.push( new THREE.Vector2( 2, 12 ) );
+  puntosReina.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosReina.push( new THREE.Vector2( 2.5, 14 ) );
+  puntosReina.push( new THREE.Vector2( 2, 14 ) );
+  puntosReina.push( new THREE.Vector2( 2, 15 ) );
+  puntosReina.push( new THREE.Vector2( 3.5, 17.5 ) );
+  puntosReina.push( new THREE.Vector2( 1.5, 17 ) );
+  puntosReina.push( new THREE.Vector2( 0, 17 ) );  
+  var reinaForma1 = new THREE.LatheGeometry(puntosReina);
+  var reinaMalla1 = new THREE.Mesh(reinaForma1);
+  
+  var reinaForma2 = new THREE.SphereGeometry( 2 );
+  reinaForma2.translate(0,17,0);
+  var reinaMalla2 = new THREE.Mesh(reinaForma2);
+  
+  var reinaForma3= new THREE.SphereGeometry( 1 );
+  reinaForma3.translate(0,19,0);
+  var reinaMalla3 = new THREE.Mesh(reinaForma3);
+
+  // Juntar mallas de la reina:
+  var reinaForma = new THREE.Geometry();
+  this.merge(reinaMalla1.geometry, reinaMalla1.matrix);
+  this.merge(reinaMalla2.geometry, reinaMalla2.matrix);
+  this.merge(reinaMalla3.geometry, reinaMalla3.matrix);
+}
+
+REINA.ReinaGeometry.prototype = new THREE.Geometry();
+
+REINA.setup = function(){
+  reina1 = new THREE.Mesh(new REINA.ReinaGeometry(), gris);
+  reina2 = new THREE.Mesh(new REINA.ReinaGeometry(), blanco);
+  
+  reina1.position.x=30;
+  reina1.position.y=2;
+  reina1.position.z=70;
+  reina2.position.x=30;
+  reina2.position.y=2;
+  reina2.position.z=0;
+}
+
+
+REY = new Object();
+
+REY.ReyGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosRey = [];
+  puntosRey.push( new THREE.Vector2( 0, 0 ) );
+  puntosRey.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosRey.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosRey.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosRey.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosRey.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosRey.push( new THREE.Vector2( 2, 12 ) );
+  puntosRey.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosRey.push( new THREE.Vector2( 2.5, 14 ) );
+  puntosRey.push( new THREE.Vector2( 2, 14 ) );
+  puntosRey.push( new THREE.Vector2( 2, 15 ) );
+  puntosRey.push( new THREE.Vector2( 3.5, 17.5 ) );
+  puntosRey.push( new THREE.Vector2( 0, 18.5 ) );
+  var reyForma1 = new THREE.LatheGeometry(puntosRey);
+  var reyMalla1 = new THREE.Mesh(reyForma1);
+  
+  var reyForma2 = new THREE.SphereGeometry( 1 );
+  reyForma2.translate(0,19,0);
+  var reyMalla2 = new THREE.Mesh(reyForma2);
+  
+  var reyForma3= new THREE.CylinderGeometry( 0.4, 0.4, 2.5 );
+  reyForma3.translate(0,20.5,0);
+  var reyMalla3 = new THREE.Mesh(reyForma3);
+  
+  var reyForma4= new THREE.CylinderGeometry( 0.4, 0.4, 2.25 );
+  reyForma4.translate(21,0,0);
+  reyForma4.rotateZ(Math.PI/2);
+  var reyMalla4 = new THREE.Mesh(reyForma4);
+
+  // Juntar mallas de la rey:
+  var reyForma = new THREE.Geometry();
+  this.merge(reyMalla1.geometry, reyMalla1.matrix);
+  this.merge(reyMalla2.geometry, reyMalla2.matrix);
+  this.merge(reyMalla3.geometry, reyMalla3.matrix);
+  this.merge(reyMalla4.geometry, reyMalla4.matrix);
+}
+
+REY.ReyGeometry.prototype = new THREE.Geometry();
+
+REY.setup = function(){
+  rey1 = new THREE.Mesh(new REY.ReyGeometry(), gris);
+  rey2 = new THREE.Mesh(new REY.ReyGeometry(), blanco);
+  
+  rey1.position.x=40;
+  rey1.position.y=2;
+  rey1.position.z=70;
+  rey2.position.x=40;
+  rey2.position.y=2;
+  rey2.position.z=0;
+}
+
+
+CABALLO = new Object();
+
+CABALLO.CaballoGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosCaballo = [];
+  puntosCaballo.push( new THREE.Vector2( 0, 0 ) );
+  puntosCaballo.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosCaballo.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 3.75, 5 ) );
+  puntosCaballo.push( new THREE.Vector2( 0, 5 ) );
+  var caballoForma1 = new THREE.LatheGeometry(puntosCaballo);
+  var caballoMalla1 = new THREE.Mesh(caballoForma1);
+  
+  var caballoFigura = new THREE.Shape();
+  caballoFigura.moveTo(3, 5);
+  caballoFigura.lineTo(3.75, 7);
+  caballoFigura.lineTo(4.25, 10);
+  caballoFigura.lineTo(3.5, 13);
+  caballoFigura.lineTo(2, 16);
+  caballoFigura.lineTo(0, 17.5);
+  caballoFigura.lineTo(0, 16);
+  caballoFigura.lineTo(-2, 15);
+  caballoFigura.lineTo(-2.5, 13.5);
+  caballoFigura.lineTo(-4.25, 10);
+  caballoFigura.lineTo(-3.25, 9.5);
+  caballoFigura.lineTo(-2.5, 10);
+  caballoFigura.lineTo(-1, 10.75);
+  caballoFigura.lineTo(0, 11);
+  caballoFigura.lineTo(-0.25, 10.5);
+  caballoFigura.lineTo(-2.75, 6.5);
+  caballoFigura.lineTo(-3, 5);
+  caballoFigura.moveTo(3, 5);
+  
+  var caballoForma2 = new THREE.ExtrudeGeometry( caballoFigura, {amount: 3, bevelEnabled: false} );
+  caballoForma2.translate(0,0,-1.5);
+  caballoForma2.rotateY(Math.PI*3/2);
+  var caballoMalla2 = new THREE.Mesh(caballoForma2);
+
+  // Juntar mallas de la caballo:
+  var caballoForma = new THREE.Geometry();
+  this.merge(caballoMalla1.geometry, caballoMalla1.matrix);
+  this.merge(caballoMalla2.geometry, caballoMalla2.matrix);
+}
+
+CABALLO.CaballoGeometry.prototype = new THREE.Geometry();
+
+CABALLO.setup = function(){
+  caballo1 = new THREE.Mesh(new CABALLO.CaballoGeometry(), gris);
+  caballo2 = new THREE.Mesh(new CABALLO.CaballoGeometry(), gris);
+  caballo3 = new THREE.Mesh(new CABALLO.CaballoGeometry(), blanco);
+  caballo4 = new THREE.Mesh(new CABALLO.CaballoGeometry(), blanco);
+  
+  caballo1.position.x=10;
+  caballo1.position.y=2;
+  caballo1.position.z=70;
+  caballo2.position.x=60;
+  caballo2.position.y=2;
+  caballo2.position.z=70;
+  caballo3.position.x=10;
+  caballo3.position.y=2;
+  caballo3.position.z=0;
+  caballo3.rotateY(Math.PI);
+  caballo4.position.x=60;
+  caballo4.position.y=2;
+  caballo4.position.z=0;
+  caballo4.rotateY(Math.PI);
+}
   
 function setup(){
   escena = new THREE.Scene();
@@ -345,6 +527,14 @@ function setup(){
     escena.add(alfil2);
     escena.add(alfil3);
     escena.add(alfil4);
+    escena.add(reina1);
+    escena.add(reina2);
+    escena.add(rey1);
+    escena.add(rey2);
+    escena.add(caballo1);
+    escena.add(caballo2);
+    escena.add(caballo3);
+    escena.add(caballo4);
   
     var lienzo = document.getElementById("Tablero-Constructores");
     renderizador = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
@@ -360,6 +550,9 @@ loop = function(){
   ALFIL.setup();
   PEON.setup();
   TORRE.setup();
+  REINA.setup();
+  REY.setup();
+  CABALLO.setup();
   setup();
   }
 }
@@ -369,6 +562,9 @@ var escena, camara, renderizador, gris, blanco;
 var torre1, torre2, torre3, torre4;
 var peon1, peon2, peon3, peon4, peon5, peon6, peon7, peon8, peon9, peon10, peon11, peon12, peon13, peon14, peon15, peon16;
 var alfil1, alfil2, alfil3, alfil4;
+var reina1, reina2;
+var rey1, rey2;
+var caballo1, caballo2, caballo3, caballo4;
 
 setup1();
 loop(); 
