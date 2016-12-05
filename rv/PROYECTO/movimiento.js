@@ -167,9 +167,9 @@ TEXTURA.setup = function() {
   var cargador2 = new THREE.TextureLoader();
   cargador2.load("marmol_negro.jpg",TEXTURA.retrollamada2);
   var cargador3 = new THREE.TextureLoader();
-  cargador3.load("madera.jpg",TEXTURA.retrollamada3);
+  cargador3.load("marmol_blanco.jpg",TEXTURA.retrollamada3);
   var cargador4 = new THREE.TextureLoader();
-  cargador4.load("madera.jpg",TEXTURA.retrollamada4);
+  cargador4.load("marmol_negro.jpg",TEXTURA.retrollamada4);
 }
 
 TEXTURA.setup2 = function(){
