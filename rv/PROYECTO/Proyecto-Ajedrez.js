@@ -36,7 +36,7 @@ TEXTURA9.retrollamada = function( textura ) {
 }
 var TEXTURA10 = new Object();
 TEXTURA10.retrollamada = function( textura ) {
-  TEXTURA10.material = new THREE.MeshBasicMaterial( {map: textura} ); 
+  TEXTURA10.material = new THREE.MeshBasicMaterial( {map: textura} );
 }
 var TEXTURA11 = new Object();
 TEXTURA11.retrollamada = function( textura ) {
@@ -737,101 +737,12 @@ function setup(){
   scene.add(caballo2);
   scene.add(caballo3);
   scene.add(caballo4);
-	
- 	 objects.push(torre1);
-	 objects.push(torre2);
-	 objects.push(torre3);
-	 objects.push(torre4);
-	 objects.push(peon1);
-	objects.push(peon2);
-	objects.push(peon3);
-	objects.push(peon4);
-	objects.push(peon5);
-	objects.push(peon6);
-	objects.push(peon7);
-	objects.push(peon8);
-	objects.push(peon9);
-	objects.push(peon10);
-	objects.push(peon11);
-	objects.push(peon12);
-	objects.push(peon13);
-	objects.push(peon14);
-	objects.push(peon15);
-	objects.push(peon16);
-	objects.push(alfil1);
-	 objects.push(alfil2);
-	 objects.push(alfil3);
-	 objects.push(alfil4);
-	objects.push(caballo1);
-	 objects.push(caballo2);
-	 objects.push(caballo3);
-	 objects.push(caballo4);
-	objects.push(reina1);
-	objects.push(reina2);
-	objects.push(rey1);
-	objects.push(rey2);
-	
-// Plane, that helps to determinate an intersection position
-plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(500, 500, 8, 8), new THREE.MeshBasicMaterial({color: 0xffffff}));
-plane.visible = false;
-scene.add(this.plane);
-
   
   var lienzo = document.getElementById("Proyecto-Ajedrez");
   renderer = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
   renderer.setSize( window.innerWidth*.98, window.innerHeight*.98);
   
   setupDone = true;
-}
-
-function onDocumentMouseDown( event ) { 
- // Get mouse position
-var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-// Get 3D vector from 3D mouse position using 'unproject' function
-var vector = new THREE.Vector3(mouseX, mouseY, 1);
-vector.unproject(camera);
-// Set the raycaster position
-raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-// Find all intersected objects
-var intersects = raycaster.intersectObjects(objects);
-if (intersects.length > 0) {
-// Set the selection - first intersected object
-selection = intersects[0].object;
-// Calculate the offset
-var intersects = raycaster.intersectObject(plane);
-offset.copy(intersects[0].point).sub(plane.position);
-}
-}
-
-function onDocumentMouseMove (event) {
-event.preventDefault();
-// Get mouse position
-var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-// Get 3D vector from 3D mouse position using 'unproject' function
-var vector = new THREE.Vector3(mouseX, mouseY, 1);
-vector.unproject(camera);
-// Set the raycaster position
-raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-if (selection) {
-// Check the position where the plane is intersected
-var intersects = raycaster.intersectObject(plane);
-// Reposition the object based on the intersection point with the plane
-selection.position.copy(intersects[0].point.sub(offset));
-} else {
-// Update position of the plane if need
-var intersects = raycaster.intersectObjects(objects);
-if (intersects.length > 0) {
-plane.position.copy(intersects[0].object.position);
-plane.lookAt(camera.position);
-}
-}
-}
-
-function onDocumentMouseUp (event) {
-// Enable the controls
-selection = null;
 }
 
 
@@ -855,6 +766,51 @@ function checkRotation(){
   var centro = new THREE.Vector3(35, 2, 35);
   camera.lookAt(centro);
 }
+
+
+function onDocumentMouseDown( event ) { 
+  mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
+  mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
+  mouse.z = 0.5;
+	
+  // update the picking ray with the camera and mouse position
+  raycaster.setFromCamera( mouse, camera );	
+
+  // calculate objects intersecting the picking ray
+  var intersects = raycaster.intersectObjects( scene.children );
+  
+  // INTERSECTED = the object in the scene currently closest to the camera 
+  //      and intersected by the Ray projected from the mouse position    
+  
+  // if there is one (or more) intersections
+  if ( intersects.length > 0 )
+  {
+    // if the closest object intersected is not the currently stored intersection object
+    if ( intersects[ 0 ].object != INTERSECTED )
+    {
+       // restore previous intersection object (if it exists) to its original color
+       if ( INTERSECTED )
+         INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+       // store reference to closest object as current intersection object
+       INTERSECTED = intersects[ 0 ].object;
+       // store color of closest object (for later restoration)
+       INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+       // set a new color for closest object
+       INTERSECTED.material.color.setHex( 0xffff00 );
+     }
+  }
+  else // there are no intersections
+  {
+    // restore previous intersection object (if it exists) to its original color
+    if ( INTERSECTED )
+      INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+    // remove previous intersection object reference
+    //     by setting current intersection object to "nothing"
+    INTERSECTED = null;
+  }
+}
+
+
 
 function render() {
   renderer.render( scene, camera );
@@ -885,8 +841,6 @@ loop = function(){
   }
   if (setupDone){
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
-    document.addEventListener('mouseup', onDocumentMouseUp, false);
     render();
     checkRotation();
   }
@@ -907,15 +861,12 @@ var caballo1, caballo2, caballo3, caballo4;
 // Para rotación de cámara:
 var rotSpeed = .02;
 
-// Para selección de pieza
+// Para seleeción de pieza
 var objects = [];
 var recursiveFlag;
 var raycaster = new THREE.Raycaster(); // create once
 var mouse = new THREE.Vector2(); // create once
 var INTERSECTED;
-var selection;
-var plane;
-var offset;
 
 setup1();
 loop();
