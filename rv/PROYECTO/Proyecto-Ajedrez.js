@@ -915,6 +915,7 @@ var mouse = new THREE.Vector2(); // create once
 var INTERSECTED;
 var selection;
 var plane;
+var offset;
 
 setup1();
 loop();
