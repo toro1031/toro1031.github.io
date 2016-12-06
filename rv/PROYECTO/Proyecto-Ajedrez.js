@@ -808,64 +808,6 @@ function checkRotation(){
   camera.lookAt(centro);
 }
 
-function moverPieza(){
-	if(banderaz==0&&banderax==0){
-	 if (keyboard.pressed("D")) {
-		 if (der==0) {
-		INTERSECTED.translateX(60);
-		der=1;
-		 }
-}
-	else
-	der=0;
-     if (keyboard.pressed("A")) {
-		 if (izq==0) {
-INTERSECTED.translateX(-60);
-	izq=1;
-		 }
-}
-	 else
-	izq=0;
-     if (keyboard.pressed("W")) {
-		 if (arr==0) {
-INTERSECTED.translateZ(-60);
-	arr=1;
-		 }
-}
-	
-	     else
-	arr=0;
-     if (keyboard.pressed("S")) {
-		 if (aba==0) {
-INTERSECTED.translateZ(60);
-	aba=1;
-		 }
-}
-
-	     else
-	aba=0;	
-	}
-	if((INTERSECTED.position.x != intersects[ 0 ].object.position.x) && banderax===1){
-		TEXTURA.velocidadt1x=-(intersects[ 0 ].object.position.x-INTERSECTED.position.x)/Math.abs(intersects[ 0 ].object.position.x-INTERSECTED.position.x);
-		intersects[ 0 ].object.translateX(TEXTURA.velocidadt1x);
-	}
-	if((INTERSECTED.position.z != intersects[ 0 ].object.position.z)&&banderaz===1){
-		TEXTURA.velocidadt1z=-(intersects[ 0 ].object.position.z-INTERSECTED.position.z)/Math.abs(intersects[ 0 ].object.position.z-INTERSECTED.position.z);
-		intersects[ 0 ].object.translateZ(TEXTURA.velocidadt1z);
-	}
-	if(keyboard.pressed("space")){
-		banderax=1;
-		banderaz=1;
-	}
-	if((INTERSECTED.position.x === intersects[ 0 ].object.position.x))
-		banderax=0;
-	if((INTERSECTED.position.z === intersects[ 0 ].object.position.z))
-		banderaz=0;
-	
-}
-
-var der=0, izq=0, arr=0,aba=0,banderax=0,banderaz=0;
-
 function render() {
   renderer.render( scene, camera );
 }
@@ -897,7 +839,6 @@ loop = function(){
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
     render();
     checkRotation();
-    moverPieza();
   }
 }
 
