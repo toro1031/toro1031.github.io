@@ -745,29 +745,6 @@ function setup(){
   setupDone = true;
 }
 
-
-function checkRotation(){
-  var x = camera.position.x-35;
-  var y = camera.position.y;
-  var z = camera.position.z-35;
-
-  if (keyboard.pressed("left")){
-    camera.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed) + 35;
-    camera.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed) + 35;
-  } else if (keyboard.pressed("right")){
-    camera.position.x = x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed) + 35;
-    camera.position.z = z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed) + 35;
-  }
-  if (keyboard.pressed("up")){
-    camera.position.y = y + 1;
-  } else if (keyboard.pressed("down")){
-    camera.position.y = y - 1;
-  }
-  var centro = new THREE.Vector3(35, 2, 35);
-  camera.lookAt(centro);
-}
-
-
 function onDocumentMouseDown( event ) { 
   mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
   mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
@@ -810,7 +787,87 @@ function onDocumentMouseDown( event ) {
   }
 }
 
+function checkRotation(){
+  var x = camera.position.x-35;
+  var y = camera.position.y;
+  var z = camera.position.z-35;
 
+  if (keyboard.pressed("left")){
+    camera.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed) + 35;
+    camera.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed) + 35;
+  } else if (keyboard.pressed("right")){
+    camera.position.x = x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed) + 35;
+    camera.position.z = z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed) + 35;
+  }
+  if (keyboard.pressed("up")){
+    camera.position.y = y + 1;
+  } else if (keyboard.pressed("down")){
+    camera.position.y = y - 1;
+  }
+  var centro = new THREE.Vector3(35, 2, 35);
+  camera.lookAt(centro);
+}
+
+function moverPieza(){
+	if(banderaz==0&&banderax==0){
+	 if (keyboard.pressed("D")) {
+		 if (der==0) {
+		INTERSECTED.translateX(60);
+		der=1;
+		 }
+}
+	else
+	der=0;
+     if (keyboard.pressed("A")) {
+		 if (izq==0) {
+INTERSECTED.translateX(-60);
+	izq=1;
+		 }
+}
+	 else
+	izq=0;
+     if (keyboard.pressed("W")) {
+		 if (arr==0) {
+INTERSECTED.translateZ(-60);
+	arr=1;
+		 }
+}
+	
+	     else
+	arr=0;
+     if (keyboard.pressed("S")) {
+		 if (aba==0) {
+INTERSECTED.translateZ(60);
+	aba=1;
+		 }
+}
+
+	     else
+	aba=0;	
+	}
+	if((INTERSECTED.position.x != intersects[ 0 ].object.position.x) && banderax===1){
+		TEXTURA.velocidadt1x=-(intersects[ 0 ].object.position.x-INTERSECTED.position.x)/Math.abs(intersects[ 0 ].object.position.x-INTERSECTED.position.x);
+		intersects[ 0 ].object.translateX(TEXTURA.velocidadt1x);
+	}
+	if((INTERSECTED.position.z != intersects[ 0 ].object.position.z)&&banderaz===1){
+		TEXTURA.velocidadt1z=-(intersects[ 0 ].object.position.z-INTERSECTED.position.z)/Math.abs(intersects[ 0 ].object.position.z-INTERSECTED.position.z);
+		intersects[ 0 ].object.translateZ(TEXTURA.velocidadt1z);
+	}
+	if(keyboard.pressed("space")){
+		banderax=1;
+		banderaz=1;
+	}
+	if((INTERSECTED.position.x === intersects[ 0 ].object.position.x))
+		banderax=0;
+	if((INTERSECTED.position.z === intersects[ 0 ].object.position.z))
+		banderaz=0;
+	
+}
+
+var der=0, izq=0, arr=0,aba=0,banderax=0,banderaz=0;
+	
+
+}
 
 function render() {
   renderer.render( scene, camera );
@@ -861,7 +918,7 @@ var caballo1, caballo2, caballo3, caballo4;
 // Para rotación de cámara:
 var rotSpeed = .02;
 
-// Para seleeción de pieza
+// Para selección de pieza
 var objects = [];
 var recursiveFlag;
 var raycaster = new THREE.Raycaster(); // create once
