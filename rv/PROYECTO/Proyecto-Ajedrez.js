@@ -897,6 +897,7 @@ loop = function(){
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
     render();
     checkRotation();
+    moverPieza();
   }
 }
 
