@@ -800,7 +800,7 @@ offset.copy(intersects[0].point).sub(plane.position);
 }
 }
 
-onDocumentMouseMove: function (event) {
+function onDocumentMouseMove (event) {
 event.preventDefault();
 // Get mouse position
 var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
@@ -825,7 +825,7 @@ plane.lookAt(camera.position);
 }
 }
 
-onDocumentMouseUp: function (event) {
+function onDocumentMouseUp (event) {
 // Enable the controls
 controls.enabled = true;
 selection = null;
