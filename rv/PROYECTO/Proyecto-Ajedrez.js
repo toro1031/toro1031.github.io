@@ -809,7 +809,7 @@ var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 var vector = new THREE.Vector3(mouseX, mouseY, 1);
 vector.unproject(camera);
 // Set the raycaster position
-lesson10.raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
+raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
 if (selection) {
 // Check the position where the plane is intersected
 var intersects = raycaster.intersectObject(plane);
