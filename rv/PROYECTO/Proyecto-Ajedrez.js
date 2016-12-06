@@ -865,9 +865,6 @@ INTERSECTED.translateZ(60);
 }
 
 var der=0, izq=0, arr=0,aba=0,banderax=0,banderaz=0;
-	
-
-}
 
 function render() {
   renderer.render( scene, camera );
