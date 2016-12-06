@@ -770,6 +770,12 @@ function setup(){
 	objects.push(reina2);
 	objects.push(rey1);
 	objects.push(rey2);
+	
+// Plane, that helps to determinate an intersection position
+plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(500, 500, 8, 8), new THREE.MeshBasicMaterial({color: 0xffffff}));
+plane.visible = false;
+scene.add(this.plane);
+
   
   var lienzo = document.getElementById("Proyecto-Ajedrez");
   renderer = new THREE.WebGLRenderer({canvas: lienzo, antialias: true})
@@ -908,6 +914,7 @@ var raycaster = new THREE.Raycaster(); // create once
 var mouse = new THREE.Vector2(); // create once
 var INTERSECTED;
 var selection;
+var plane;
 
 setup1();
 loop();
