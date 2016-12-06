@@ -790,8 +790,6 @@ raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
 // Find all intersected objects
 var intersects = raycaster.intersectObjects(objects);
 if (intersects.length > 0) {
-// Disable the controls
-controls.enabled = false;
 // Set the selection - first intersected object
 selection = intersects[0].object;
 // Calculate the offset
@@ -827,7 +825,6 @@ plane.lookAt(camera.position);
 
 function onDocumentMouseUp (event) {
 // Enable the controls
-controls.enabled = true;
 selection = null;
 }
 
@@ -910,6 +907,7 @@ var recursiveFlag;
 var raycaster = new THREE.Raycaster(); // create once
 var mouse = new THREE.Vector2(); // create once
 var INTERSECTED;
+var selection;
 
 setup1();
 loop();
