@@ -3,10 +3,7 @@ var cargador = new THREE.TextureLoader();
 var marmol_blanco = cargador.load('marmol_blanco.jpg');
 
 //TORRE
-
-TORRE = new Object();
-
-TORRE.TorreGeometry = function(x,y){
+function Torre(x,y){
   THREE.Geometry.call(this);
   var marmol_negro = cargador.load('marmol_negro.jpg');
   var puntos = [];
@@ -55,7 +52,7 @@ TORRE.TorreGeometry = function(x,y){
   this.position.z=y;
 }
   
-TORRE.TorreGeometry.prototype = new THREE.Geometry();
+TORRE.prototype = new THREE.Geometry();
 
 // MARCO
 function Marco(size,x,y){
