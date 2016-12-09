@@ -33,6 +33,15 @@ function CuadroBlanco(size,x,y){
 }
 CuadroBlanco.prototype= new THREE.Mesh();
 
+//TORRE
+function Torre(size,x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new THREE.BoxGeometry( size/10, size, size/2), new THREE.MeshPhongMaterial({map: marmol_negro}));
+  this.size=size;
+  this.position.x=x;
+  this.position.z=y;
+}  
+Torre.prototype = new THREE.Mesh();
 
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
@@ -44,6 +53,8 @@ Environment.prototype.setMap= function(map){
       this.add(new CuadroNegro(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
+    else if (map[i][j]==="t")
+      this.add(new Torre(10,j-_offset,(i-_offset)));
   }
 }
 
@@ -51,7 +62,7 @@ function setup(){
   THREE.ImageUtils.crossOrigin='';
   var mapa=new Array();
   mapa[0] ="x         x         x         x         x         x         x         x         x         x";
-  mapa[1] ="                                                                                           ";
+  mapa[1] ="t         x         t         x         x         x         x         x         x         x";
   mapa[2] ="                                                                                           ";
   mapa[3] ="                                                                                           ";
   mapa[4] ="                                                                                           ";
