@@ -1,10 +1,15 @@
 var cargador = new THREE.TextureLoader();
 
+var marmol_blanco = cargador.load('marmol_blanco.jpg');
+
 //TORRE
 
-function TorreNegra(x,y){
- var marmol_negro = cargador.load('marmol_negro.jpg');
- var puntos = [];
+TORRE = new Object();
+
+TORRE.TorreGeometry = function(x,y){
+  THREE.Geometry.call(this);
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  var puntos = [];
   puntos.push( new THREE.Vector2( 0, 0 ) );
   puntos.push( new THREE.Vector2( 4.5, 0 ) );
   puntos.push( new THREE.Vector2( 4.5, 2 ) );
@@ -15,19 +20,24 @@ function TorreNegra(x,y){
   puntos.push( new THREE.Vector2( 3.5, 12 ) );
   puntos.push( new THREE.Vector2( 0, 12 ) );
   var torreForma1 = new THREE.LatheGeometry(puntos);
-  var torreMalla1 = new THREE.Mesh(torreForma1);
+  var torreMalla1 = new THREE.Mesh(torreForma1,new THREE.MeshPhongMaterial({map: marmol_negro}));
+
   var torreForma2 = new THREE.BoxGeometry( 7.5, 2, 7.5 );
   torreForma2.translate(0,13,0);
   var torreMalla2 = new THREE.Mesh(torreForma2);
+
   var torreForma3 = new THREE.BoxGeometry( 2, 1.5, 2 );
   torreForma3.translate(2.75,14.5,2.75);
   var torreMalla3 = new THREE.Mesh(torreForma3);
+
   var torreForma4 = new THREE.BoxGeometry( 2, 1.5, 2 );
   torreForma4.translate(-2.75,14.5,2.75);
   var torreMalla4 = new THREE.Mesh(torreForma4);
+
   var torreForma5 = new THREE.BoxGeometry( 2, 1.5, 2 );
   torreForma5.translate(2.75,14.5,-2.75);
   var torreMalla5 = new THREE.Mesh(torreForma5);
+
   var torreForma6 = new THREE.BoxGeometry( 2, 1.5, 2 );
   torreForma6.translate(-2.75,14.5,-2.75);
   var torreMalla6 = new THREE.Mesh(torreForma6);
@@ -40,13 +50,12 @@ function TorreNegra(x,y){
   this.merge(torreMalla4.geometry, torreMalla4.matrix);
   this.merge(torreMalla5.geometry, torreMalla5.matrix);
   this.merge(torreMalla6.geometry, torreMalla6.matrix);
-	
-  new THREE.MeshPhongMaterial({map: marmol_negro});
 
   this.position.x=x;
   this.position.z=y;
 }
-TorreNegra.prototype = new THREE.Mesh(); 
+  
+TORRE.TorreGeometry.prototype = new THREE.Geometry();
 
 // MARCO
 function Marco(size,x,y){
@@ -193,7 +202,7 @@ function setup(){
   environment = new Environment();
   environment.setMap(mapa);
 	
-  TorreNegra(0,2);
+  Torre.TorreGeometry(0,2);
   
   // CÁMARA
   var campoVision = 45; //grados
