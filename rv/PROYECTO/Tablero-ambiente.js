@@ -199,7 +199,7 @@ function setup(){
   environment = new Environment();
   environment.setMap(mapa);
 	
-  Torre.TorreGeometry(0,2);
+  Torre(0,2);
   
   // CÁMARA
   var campoVision = 45; //grados
