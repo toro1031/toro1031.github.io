@@ -323,6 +323,62 @@ function Caballo(x,y,tex){
 }  
 Caballo.prototype = new THREE.Mesh();
 
+CABALLO1 = new Object();
+
+CABALLO1.CaballoGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosCaballo1 = [];
+  puntosCaballo1.push( new THREE.Vector2( 0, 0 ) );
+  puntosCaballo1.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosCaballo1.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosCaballo1.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosCaballo1.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosCaballo1.push( new THREE.Vector2( 3.75, 5 ) );
+  puntosCaballo1.push( new THREE.Vector2( 0, 5 ) );
+  var caballoForma11 = new THREE.LatheGeometry(puntosCaballo1);
+  var caballoMalla11 = new THREE.Mesh(caballoForma11);
+  
+  var caballoFigura1 = new THREE.Shape();
+  caballoFigura1.moveTo(3, 5);
+  caballoFigura1.lineTo(3.75, 7);
+  caballoFigura1.lineTo(4.25, 10);
+  caballoFigura1.lineTo(3.5, 13);
+  caballoFigura1.lineTo(2, 16);
+  caballoFigura1.lineTo(0, 17.5);
+  caballoFigura1.lineTo(0, 16);
+  caballoFigura1.lineTo(-2, 15);
+  caballoFigura1.lineTo(-2.5, 13.5);
+  caballoFigura1.lineTo(-4.25, 10);
+  caballoFigura1.lineTo(-3.25, 9.5);
+  caballoFigura1.lineTo(-2.5, 10);
+  caballoFigura1.lineTo(-1, 10.75);
+  caballoFigura1.lineTo(0, 11);
+  caballoFigura1.lineTo(-0.25, 10.5);
+  caballoFigura1.lineTo(-2.75, 6.5);
+  caballoFigura1.lineTo(-3, 5);
+  caballoFigura1.moveTo(3, 5);
+  
+  var caballoForma21 = new THREE.ExtrudeGeometry( caballoFigura1, {amount: 3, bevelEnabled: false} );
+  caballoForma21.translate(0,0,-1.5);
+  caballoForma21.rotateY(Math.PI*3/2);
+  var caballoMalla21 = new THREE.Mesh(caballoForma21);
+
+  // Juntar mallas de la caballo:
+  var caballoForma1 = new THREE.Geometry();
+  this.merge(caballoMalla11.geometry, caballoMalla11.matrix);
+  this.merge(caballoMalla21.geometry, caballoMalla21.matrix);
+}
+
+CABALLO1.Caballo1Geometry.prototype = new THREE.Geometry();
+
+function Caballo1(x,y,tex){
+  THREE.Mesh.call(this, new CABALLO1.Caballo1Geometry(), new THREE.MeshPhongMaterial({map: tex}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+Caballo1.prototype = new THREE.Mesh();
+
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
   for(var j=0; j<91; j++)
@@ -352,11 +408,11 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="R")
       this.add(new Rey(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="E")
-      this.add(new Rey(j-_offset,(i-_offset-1),tex2)); 
+      this.add(new Rey(j-_offset,(i-_offset-1),tex1)); 
     else if (map[i][j]==="c")
       this.add(new Caballo(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="v")
-      this.add(new Caballo(j-_offset,(i-_offset-1),tex2));
+      this.add(new Caballo1(j-_offset,(i-_offset-1),tex1));
   }
 }
 
