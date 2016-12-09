@@ -1,7 +1,5 @@
 var cargador = new THREE.TextureLoader();
 
-var marmol_blanco = cargador.load('marmol_blanco.jpg');
-
 //TORRE
 function Torre(size,x,y){
   var marmol_negro = cargador.load('marmol_negro.jpg');
