@@ -4,7 +4,6 @@ var tex2 = cargador.load('marmol_negro.jpg');
 
 // MARCO
 function Marco(size,x,y){
-  //var madera = THREE.ImageUtils.loadTexture('madera.jpg');
   var madera = cargador.load('madera.jpg');
   THREE.Mesh.call(this, new THREE.BoxGeometry(size,size/2,size), new THREE.MeshPhongMaterial({map: madera}));
   this.size=size;
@@ -12,7 +11,6 @@ function Marco(size,x,y){
   this.position.z=y;
 }
 Marco.prototype= new THREE.Mesh();
-
 
 // TABLERO
 function Cuadro(size,x,y,tex){
@@ -74,12 +72,12 @@ TORRE.TorreGeometry = function(){
   
   TORRE.TorreGeometry.prototype = new THREE.Geometry();
 
-function TorreNegra(x,y,tex){
+function Torre(x,y,tex){
   THREE.Mesh.call(this, new TORRE.TorreGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-TorreNegra.prototype = new THREE.Mesh();
+Torre.prototype = new THREE.Mesh();
 
 //PEON
 PEON = new Object();
@@ -116,13 +114,12 @@ PEON.PeonGeometry = function(){
 
 PEON.PeonGeometry.prototype = new THREE.Geometry();
 
-function PeonNegro(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new PEON.PeonGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function Peon(x,y,tex){
+  THREE.Mesh.call(this, new PEON.PeonGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-PeonNegro.prototype = new THREE.Mesh();
+Peon.prototype = new THREE.Mesh();
 
 ALFIL = new Object();
 
@@ -164,13 +161,12 @@ ALFIL.AlfilGeometry = function(){
 
 ALFIL.AlfilGeometry.prototype = new THREE.Geometry();
 
-function AlfilNegro(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new ALFIL.AlfilGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function Alfil(x,y,tex){
+  THREE.Mesh.call(this, new ALFIL.AlfilGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-AlfilNegro.prototype = new THREE.Mesh();
+Alfil.prototype = new THREE.Mesh();
 
 REINA = new Object();
 
@@ -212,13 +208,12 @@ REINA.ReinaGeometry = function(){
 
 REINA.ReinaGeometry.prototype = new THREE.Geometry();
 
-function ReinaNegra(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new REINA.ReinaGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function Reina(x,y,tex){
+  THREE.Mesh.call(this, new REINA.ReinaGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-ReinaNegra.prototype = new THREE.Mesh();
+Reina.prototype = new THREE.Mesh();
 
 REY = new Object();
 
@@ -265,13 +260,12 @@ REY.ReyGeometry = function(){
 
 REY.ReyGeometry.prototype = new THREE.Geometry();
 
-function ReyNegro(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new REY.ReyGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function Rey(x,y,tex){
+  THREE.Mesh.call(this, new REY.ReyGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-ReyNegro.prototype = new THREE.Mesh();
+Rey.prototype = new THREE.Mesh();
 
 CABALLO = new Object();
 
@@ -322,13 +316,12 @@ CABALLO.CaballoGeometry = function(){
 
 CABALLO.CaballoGeometry.prototype = new THREE.Geometry();
 
-function CaballoNegro(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new CABALLO.CaballoGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function Caballo(x,y,tex){
+  THREE.Mesh.call(this, new CABALLO.CaballoGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
-CaballoNegro.prototype = new THREE.Mesh();
+Caballo.prototype = new THREE.Mesh();
 
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
@@ -341,17 +334,29 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new Cuadro(10,j-_offset,(i-_offset),tex1));
     else if (map[i][j]==="t")
-      this.add(new TorreNegra(j-_offset,(i-_offset-1),tex2));
+      this.add(new Torre(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="y")
+      this.add(new Torre(j-_offset,(i-_offset-1),tex1));
     else if (map[i][j]==="p")
-      this.add(new PeonNegro(j-_offset,(i-_offset-1)));
+      this.add(new Peon(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="o")
+      this.add(new Peon(j-_offset,(i-_offset-1),tex1));
     else if (map[i][j]==="a")
-      this.add(new AlfilNegro(j-_offset,(i-_offset-1)));
+      this.add(new Alfil(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="s")
+      this.add(new Alfil(j-_offset,(i-_offset-1),tex1));
     else if (map[i][j]==="r")
-      this.add(new ReinaNegra(j-_offset,(i-_offset-1)));
+      this.add(new Reina(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="e")
+      this.add(new Reina(j-_offset,(i-_offset-1),tex1));
     else if (map[i][j]==="R")
-      this.add(new ReyNegro(j-_offset,(i-_offset-1))); 
+      this.add(new Rey(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="E")
+      this.add(new Rey(j-_offset,(i-_offset-1),tex2)); 
     else if (map[i][j]==="c")
-      this.add(new CaballoNegro(j-_offset,(i-_offset-1)));
+      this.add(new Caballo(j-_offset,(i-_offset-1),tex2));
+    else if (map[i][j]==="v")
+      this.add(new Caballo(j-_offset,(i-_offset-1),tex2));
   }
 }
 
@@ -427,7 +432,7 @@ function setup(){
   mapa[66]="                                                                                           ";
   mapa[67]="                                                                                           ";
   mapa[68]="                                                                                           ";
-  mapa[69]="                                                                                           ";
+  mapa[69]="          o         o         o         o         o         o         o         o          ";
   mapa[70]="x         b         n         b         n         b         n         b         n         x";
   mapa[71]="                                                                                           ";
   mapa[72]="                                                                                           ";
@@ -437,7 +442,7 @@ function setup(){
   mapa[76]="                                                                                           ";
   mapa[77]="                                                                                           ";
   mapa[78]="                                                                                           ";
-  mapa[79]="                                                                                           ";
+  mapa[79]="          y         v         s         E         e         s         v         y          ";
   mapa[80]="x         n         b         n         b         n         b         n         b         x";
   mapa[81]="                                                                                           ";
   mapa[82]="                                                                                           ";
