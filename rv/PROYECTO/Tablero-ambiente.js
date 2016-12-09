@@ -52,7 +52,7 @@ function Torre(x,y){
   this.position.z=y;
 }
   
-TORRE.prototype = new THREE.Geometry();
+TORRE.prototype = new THREE.Mesh();
 
 // MARCO
 function Marco(size,x,y){
