@@ -35,7 +35,6 @@ function CuadroBlanco(size,x,y){
 CuadroBlanco.prototype= new THREE.Mesh();
 
 //TORRE
-
 TORRE = new Object();
 
 TORRE.TorreGeometry = function(){
@@ -94,6 +93,49 @@ function TorreNegra(x,y){
 }  
 Torre.prototype = new THREE.Mesh();
 
+//PEON
+PEON = new Object();
+
+PEON.PeonGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosPeon = [];
+  puntosPeon.push( new THREE.Vector2( 0, 0 ) );
+  puntosPeon.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosPeon.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosPeon.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosPeon.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosPeon.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 8 ) );
+  puntosPeon.push( new THREE.Vector2( 2.5, 8 ) );
+  puntosPeon.push( new THREE.Vector2( 2.5, 9.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 9.5 ) );
+  puntosPeon.push( new THREE.Vector2( 2, 11 ) );
+  puntosPeon.push( new THREE.Vector2( 0, 11 ) );
+  
+  var peonForma1 = new THREE.LatheGeometry(puntosPeon);
+  var peonMalla1 = new THREE.Mesh(peonForma1);
+  
+  var peonForma2 = new THREE.SphereGeometry( 3 ); 
+  peonForma2.translate(0,12.5,0);
+  var peonMalla2 = new THREE.Mesh(peonForma2);
+
+  // Juntar mallas de peon:
+  var peonForma = new THREE.Geometry();
+  this.merge(peonMalla1.geometry, peonMalla1.matrix);
+  this.merge(peonMalla2.geometry, peonMalla2.matrix);
+}
+
+PEON.PeonGeometry.prototype = new THREE.Geometry();
+
+function PeonNegro(x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new PEON.PeonGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+Torre.prototype = new THREE.Mesh();
+
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
   for(var j=0; j<91; j++)
@@ -106,6 +148,8 @@ Environment.prototype.setMap= function(map){
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
       this.add(new TorreNegra(j-_offset+1,(i-_offset+1)));
+    else if (map[i][j]==="p")
+      this.add(new PeonNegro(j-_offset+1,(i-_offset+1)));
   }
 }
 
@@ -133,7 +177,7 @@ function setup(){
   mapa[18]="                                                                                           ";
   mapa[19]="                                                                                           ";
   mapa[20]="x         n         b         n         b         n         b         n         b         x";
-  mapa[21]="                                                                                           ";
+  mapa[21]="          p         p         p         p         p         p         p         p          ";
   mapa[22]="                                                                                           ";
   mapa[23]="                                                                                           ";
   mapa[24]="                                                                                           ";
