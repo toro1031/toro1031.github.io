@@ -91,7 +91,7 @@ function TorreNegra(x,y){
   this.position.x=x;
   this.position.z=y;
 }  
-Torre.prototype = new THREE.Mesh();
+TorreNegra.prototype = new THREE.Mesh();
 
 //PEON
 PEON = new Object();
@@ -134,7 +134,7 @@ function PeonNegro(x,y){
   this.position.x=x;
   this.position.z=y;
 }  
-Torre.prototype = new THREE.Mesh();
+PeonNegro.prototype = new THREE.Mesh();
 
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
