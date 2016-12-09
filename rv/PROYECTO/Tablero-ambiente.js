@@ -325,7 +325,7 @@ Caballo.prototype = new THREE.Mesh();
 
 CABALLO1 = new Object();
 
-CABALLO1.CaballoGeometry = function(){
+CABALLO1.Caballo1Geometry = function(){
   THREE.Geometry.call(this);
 
   var puntosCaballo1 = [];
