@@ -16,6 +16,7 @@ Marco.prototype= new THREE.Mesh();
 function CuadroNegro(size,x,y){
   //var marmol_negro = THREE.ImageUtils.loadTexture('marmol_negro.jpg');
   var marmol_negro = cargador.load('marmol_negro.jpg');
+	
   THREE.Mesh.call(this, new THREE.BoxGeometry(size,size/5,size), new THREE.MeshPhongMaterial({map: marmol_negro}));
   this.size=size;
   this.position.x=x;
@@ -34,10 +35,60 @@ function CuadroBlanco(size,x,y){
 CuadroBlanco.prototype= new THREE.Mesh();
 
 //TORRE
-function Torre(size,x,y){
+
+TORRE = new Object();
+
+TORRE.TorreGeometry = function(){
+  THREE.Geometry.call(this);
+  
+  var puntos = [];
+  puntos.push( new THREE.Vector2( 0, 0 ) );
+  puntos.push( new THREE.Vector2( 4.5, 0 ) );
+  puntos.push( new THREE.Vector2( 4.5, 2 ) );
+  puntos.push( new THREE.Vector2( 3.5, 2 ) );
+  puntos.push( new THREE.Vector2( 3.5, 4 ) );
+  puntos.push( new THREE.Vector2( 2.5, 6 ) );
+  puntos.push( new THREE.Vector2( 2.5, 10 ) );
+  puntos.push( new THREE.Vector2( 3.5, 12 ) );
+  puntos.push( new THREE.Vector2( 0, 12 ) );
+  var torreForma1 = new THREE.LatheGeometry(puntos);
+  var torreMalla1 = new THREE.Mesh(torreForma1);
+
+  var torreForma2 = new THREE.BoxGeometry( 7.5, 2, 7.5 );
+  torreForma2.translate(0,13,0);
+  var torreMalla2 = new THREE.Mesh(torreForma2);
+
+  var torreForma3 = new THREE.BoxGeometry( 2, 1.5, 2 );
+  torreForma3.translate(2.75,14.5,2.75);
+  var torreMalla3 = new THREE.Mesh(torreForma3);
+
+  var torreForma4 = new THREE.BoxGeometry( 2, 1.5, 2 );
+  torreForma4.translate(-2.75,14.5,2.75);
+  var torreMalla4 = new THREE.Mesh(torreForma4);
+
+  var torreForma5 = new THREE.BoxGeometry( 2, 1.5, 2 );
+  torreForma5.translate(2.75,14.5,-2.75);
+  var torreMalla5 = new THREE.Mesh(torreForma5);
+
+  var torreForma6 = new THREE.BoxGeometry( 2, 1.5, 2 );
+  torreForma6.translate(-2.75,14.5,-2.75);
+  var torreMalla6 = new THREE.Mesh(torreForma6);
+
+  //JUNTAR MALLAS:
+  var torreForma = new THREE.Geometry();
+  this.merge(torreMalla1.geometry, torreMalla1.matrix);
+  this.merge(torreMalla2.geometry, torreMalla2.matrix);
+  this.merge(torreMalla3.geometry, torreMalla3.matrix);
+  this.merge(torreMalla4.geometry, torreMalla4.matrix);
+  this.merge(torreMalla5.geometry, torreMalla5.matrix);
+  this.merge(torreMalla6.geometry, torreMalla6.matrix);
+  }
+  
+  TORRE.TorreGeometry.prototype = new THREE.Geometry();
+
+function Torre(x,y){
   var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new THREE.BoxGeometry( size/10, size, size/2), new THREE.MeshPhongMaterial({map: marmol_negro}));
-  this.size=size;
+  THREE.Mesh.call(this, new TORRE.TorreGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
   this.position.x=x;
   this.position.z=y;
 }  
@@ -54,7 +105,7 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
-      this.add(new Torre(10,j-_offset,(i-_offset)));
+      this.add(new Torre(j-_offset,(i-_offset)));
   }
 }
 
