@@ -184,6 +184,54 @@ function AlfilNegro(x,y){
 }  
 AlfilNegro.prototype = new THREE.Mesh();
 
+REINA = new Object();
+
+REINA.ReinaGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosReina = [];
+  puntosReina.push( new THREE.Vector2( 0, 0 ) );
+  puntosReina.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosReina.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosReina.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosReina.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosReina.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosReina.push( new THREE.Vector2( 2, 12 ) );
+  puntosReina.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosReina.push( new THREE.Vector2( 2.5, 14 ) );
+  puntosReina.push( new THREE.Vector2( 2, 14 ) );
+  puntosReina.push( new THREE.Vector2( 2, 15 ) );
+  puntosReina.push( new THREE.Vector2( 3.5, 17.5 ) );
+  puntosReina.push( new THREE.Vector2( 1.5, 17 ) );
+  puntosReina.push( new THREE.Vector2( 0, 17 ) );  
+  var reinaForma1 = new THREE.LatheGeometry(puntosReina);
+  var reinaMalla1 = new THREE.Mesh(reinaForma1);
+  
+  var reinaForma2 = new THREE.SphereGeometry( 2 );
+  reinaForma2.translate(0,17,0);
+  var reinaMalla2 = new THREE.Mesh(reinaForma2);
+  
+  var reinaForma3= new THREE.SphereGeometry( 1 );
+  reinaForma3.translate(0,19,0);
+  var reinaMalla3 = new THREE.Mesh(reinaForma3);
+
+  // Juntar mallas de la reina:
+  var reinaForma = new THREE.Geometry();
+  this.merge(reinaMalla1.geometry, reinaMalla1.matrix);
+  this.merge(reinaMalla2.geometry, reinaMalla2.matrix);
+  this.merge(reinaMalla3.geometry, reinaMalla3.matrix);
+}
+
+REINA.ReinaGeometry.prototype = new THREE.Geometry();
+
+function ReinaNegra(x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new REINA.ReinaGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+ReinaNegra.prototype = new THREE.Mesh();
+
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
   for(var j=0; j<91; j++)
@@ -195,11 +243,13 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
-      this.add(new TorreNegra(j-_offset-1,(i-_offset)));
+      this.add(new TorreNegra(j-_offset,(i-_offset-1)));
     else if (map[i][j]==="p")
-      this.add(new PeonNegro(j-_offset-1,(i-_offset)));
+      this.add(new PeonNegro(j-_offset,(i-_offset-1)));
     else if (map[i][j]==="a")
-      this.add(new AlfilNegro(j-_offset-1,(i-_offset)));
+      this.add(new AlfilNegro(j-_offset,(i-_offset-1)));
+    else if (map[i][j]==="r")
+      this.add(new ReinaNegra(j-_offset,(i-_offset-1)));
   }
 }
 
@@ -217,7 +267,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="          t                   a                             a                   t          ";
+  mapa[11]="          t                   a                   r         a                   t          ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
