@@ -86,7 +86,7 @@ TORRE.TorreGeometry = function(){
   
   TORRE.TorreGeometry.prototype = new THREE.Geometry();
 
-function Torre(x,y){
+function TorreNegra(x,y){
   var marmol_negro = cargador.load('marmol_negro.jpg');
   THREE.Mesh.call(this, new TORRE.TorreGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
   this.position.x=x;
@@ -104,8 +104,8 @@ Environment.prototype.setMap= function(map){
       this.add(new CuadroNegro(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
-    else if (map[i][j]==="t")
-      this.add(new Torre(j-_offset+1,(i-_offset+1)));
+    else if (map[i][j]==="tn")
+      this.add(new TorreNegra(j-_offset+1,(i-_offset+1)));
   }
 }
 
@@ -123,7 +123,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="          t                                                                     t          ";
+  mapa[11]="          tn                                                                    tn         ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
