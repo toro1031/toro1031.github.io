@@ -1,15 +1,5 @@
 var cargador = new THREE.TextureLoader();
 
-//TORRE
-function Torre(size,x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new THREE.BoxGeometry( size/10, size, size/2), new THREE.MeshPhongMaterial({map: marmol_negro}));
-  this.size=size;
-  this.position.x=x;
-  this.position.z=y;
-}  
-Torre.prototype = new THREE.Mesh();
-
 // MARCO
 function Marco(size,x,y){
   //var madera = THREE.ImageUtils.loadTexture('madera.jpg');
@@ -154,8 +144,6 @@ function setup(){
   
   environment = new Environment();
   environment.setMap(mapa);
-	
-  Torre(10, 1, 2);
   
   // CÁMARA
   var campoVision = 45; //grados
