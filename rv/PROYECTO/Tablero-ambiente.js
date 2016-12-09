@@ -62,7 +62,7 @@ function setup(){
   THREE.ImageUtils.crossOrigin='';
   var mapa=new Array();
   mapa[0] ="x         x         x         x         x         x         x         x         x         x";
-  mapa[1] ="t         x         t         x         x         x         x         x         x         x";
+  mapa[1] ="                                                                                           ";
   mapa[2] ="                                                                                           ";
   mapa[3] ="                                                                                           ";
   mapa[4] ="                                                                                           ";
@@ -72,7 +72,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="                                                                                           ";
+  mapa[11]="          t                                                                     t          ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
