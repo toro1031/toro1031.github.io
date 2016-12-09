@@ -6,7 +6,7 @@ var marmol_blanco = cargador.load('marmol_blanco.jpg');
 function Torre(x,y){
   THREE.Geometry.call(this);
   var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new THREE.BoxGeometry(1,10,5), new THREE.MeshPhongMaterial({map: marmol_negro}));
+  THREE.Mesh.call(this, new THREE.BoxGeometry( 1, 10, 5), new THREE.MeshPhongMaterial({map: marmol_negro}));
   this.position.x=x;
   this.position.z=y;
 }  
@@ -157,7 +157,7 @@ function setup(){
   environment = new Environment();
   environment.setMap(mapa);
 	
-  Torre(0,2);
+  Torre( 1, 2);
   
   // CÁMARA
   var campoVision = 45; //grados
