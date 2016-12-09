@@ -105,7 +105,7 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
-      this.add(new Torre(j-_offset,(i-_offset)));
+      this.add(new Torre(j-_offset+1,(i-_offset+1)));
   }
 }
 
