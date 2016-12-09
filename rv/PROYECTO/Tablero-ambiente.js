@@ -136,6 +136,54 @@ function PeonNegro(x,y){
 }  
 PeonNegro.prototype = new THREE.Mesh();
 
+ALFIL = new Object();
+
+ALFIL.AlfilGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosAlfil = [];
+  puntosAlfil.push( new THREE.Vector2( 0, 0 ) );
+  puntosAlfil.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosAlfil.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 10 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 10 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 12 ) );
+  puntosAlfil.push( new THREE.Vector2( 2, 13.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 1.5, 13.5 ) );
+  puntosAlfil.push( new THREE.Vector2( 2.5, 15 ) );
+  puntosAlfil.push( new THREE.Vector2( 0, 15 ) );
+  var alfilForma1 = new THREE.LatheGeometry(puntosAlfil);
+  var alfilMalla1 = new THREE.Mesh(alfilForma1);
+  
+  var alfilForma2 = new THREE.ConeGeometry( 2.5, 4 );
+  alfilForma2.translate(0,17,0);
+  var alfilMalla2 = new THREE.Mesh(alfilForma2);
+  
+  var alfilForma3= new THREE.SphereGeometry( 1 );
+  alfilForma3.translate(0,18.75,0);
+  var alfilMalla3 = new THREE.Mesh(alfilForma3);
+
+  // Juntar mallas de alfil:
+  var alfilForma = new THREE.Geometry();
+  this.merge(alfilMalla1.geometry, alfilMalla1.matrix);
+  this.merge(alfilMalla2.geometry, alfilMalla2.matrix);
+  this.merge(alfilMalla3.geometry, alfilMalla3.matrix);
+}
+
+ALFIL.AlfilGeometry.prototype = new THREE.Geometry();
+
+function AlfilNegro(x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new ALFIL.PeonGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+AlfilNegro.prototype = new THREE.Mesh();
+
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
   for(var j=0; j<91; j++)
@@ -147,9 +195,11 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
-      this.add(new TorreNegra(j-_offset+1,(i-_offset+1)));
+      this.add(new TorreNegra(j-_offset-1,(i-_offset)));
     else if (map[i][j]==="p")
-      this.add(new PeonNegro(j-_offset+1,(i-_offset+1)));
+      this.add(new PeonNegro(j-_offset-1,(i-_offset)));
+    else if (map[i][j]==="a")
+      this.add(new AlfilNegro(j-_offset-1,(i-_offset)));
   }
 }
 
@@ -167,7 +217,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="          t                                                                     t          ";
+  mapa[11]="          t                   a                             a                   t          ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
