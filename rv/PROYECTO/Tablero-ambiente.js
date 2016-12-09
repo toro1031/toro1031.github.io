@@ -392,27 +392,27 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="t")
       this.add(new Torre(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="y")
-      this.add(new Torre(j-_offset,(i-_offset-1),tex1));
+      this.add(new Torre(j-_offset,(i-_offset+1),tex1));
     else if (map[i][j]==="p")
       this.add(new Peon(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="o")
-      this.add(new Peon(j-_offset,(i-_offset-1),tex1));
+      this.add(new Peon(j-_offset,(i-_offset+1),tex1));
     else if (map[i][j]==="a")
       this.add(new Alfil(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="s")
-      this.add(new Alfil(j-_offset,(i-_offset-1),tex1));
+      this.add(new Alfil(j-_offset,(i-_offset+1),tex1));
     else if (map[i][j]==="r")
       this.add(new Reina(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="e")
-      this.add(new Reina(j-_offset,(i-_offset-1),tex1));
+      this.add(new Reina(j-_offset,(i-_offset+1),tex1));
     else if (map[i][j]==="R")
       this.add(new Rey(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="E")
-      this.add(new Rey(j-_offset,(i-_offset-1),tex1)); 
+      this.add(new Rey(j-_offset,(i-_offset+1),tex1)); 
     else if (map[i][j]==="c")
       this.add(new Caballo(j-_offset,(i-_offset-1),tex2));
     else if (map[i][j]==="v")
-      this.add(new Caballo1(j-_offset,(i-_offset-1),tex1));
+      this.add(new Caballo1(j-_offset,(i-_offset+1),tex1));
   }
 }
 
