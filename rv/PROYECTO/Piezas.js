@@ -118,3 +118,4 @@ function setup(){
   
   environment = new Environment();
   environment.setMap(mapa);
+}
