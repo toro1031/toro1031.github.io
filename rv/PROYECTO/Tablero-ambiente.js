@@ -4,7 +4,6 @@ var marmol_blanco = cargador.load('marmol_blanco.jpg');
 
 //TORRE
 function Torre(size,x,y){
-  THREE.Geometry.call(this);
   var marmol_negro = cargador.load('marmol_negro.jpg');
   THREE.Mesh.call(this, new THREE.BoxGeometry( size/10, size, size/2), new THREE.MeshPhongMaterial({map: marmol_negro}));
   this.size=size;
