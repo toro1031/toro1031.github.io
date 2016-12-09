@@ -178,7 +178,7 @@ ALFIL.AlfilGeometry.prototype = new THREE.Geometry();
 
 function AlfilNegro(x,y){
   var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new ALFIL.PeonGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  THREE.Mesh.call(this, new ALFIL.AlfilGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
   this.position.x=x;
   this.position.z=y;
 }  
