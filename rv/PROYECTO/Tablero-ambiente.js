@@ -10,7 +10,7 @@ function Torre(x,y){
   this.position.x=x;
   this.position.z=y;
 }  
-TORRE.prototype = new THREE.Mesh();
+Torre.prototype = new THREE.Mesh();
 
 // MARCO
 function Marco(size,x,y){
