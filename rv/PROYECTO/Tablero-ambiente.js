@@ -1,4 +1,6 @@
 var cargador = new THREE.TextureLoader();
+var tex1 = cargador.load('marmol_blanco.jpg');
+var tex2 = cargador.load('marmol_negro.jpg');
 
 // MARCO
 function Marco(size,x,y){
@@ -85,9 +87,8 @@ TORRE.TorreGeometry = function(){
   
   TORRE.TorreGeometry.prototype = new THREE.Geometry();
 
-function TorreNegra(x,y){
-  var marmol_negro = cargador.load('marmol_negro.jpg');
-  THREE.Mesh.call(this, new TORRE.TorreGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+function TorreNegra(x,y,tex){
+  THREE.Mesh.call(this, new TORRE.TorreGeometry(), new THREE.MeshPhongMaterial({map: tex}));	
   this.position.x=x;
   this.position.z=y;
 }  
@@ -353,7 +354,7 @@ Environment.prototype.setMap= function(map){
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="t")
-      this.add(new TorreNegra(j-_offset,(i-_offset-1)));
+      this.add(new TorreNegra(j-_offset,(i-_offset-1),tex1));
     else if (map[i][j]==="p")
       this.add(new PeonNegro(j-_offset,(i-_offset-1)));
     else if (map[i][j]==="a")
