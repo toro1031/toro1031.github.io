@@ -232,6 +232,116 @@ function ReinaNegra(x,y){
 }  
 ReinaNegra.prototype = new THREE.Mesh();
 
+REY = new Object();
+
+REY.ReyGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosRey = [];
+  puntosRey.push( new THREE.Vector2( 0, 0 ) );
+  puntosRey.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosRey.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosRey.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosRey.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosRey.push( new THREE.Vector2( 3, 4.5 ) );
+  puntosRey.push( new THREE.Vector2( 2, 12 ) );
+  puntosRey.push( new THREE.Vector2( 2.5, 12 ) );
+  puntosRey.push( new THREE.Vector2( 2.5, 14 ) );
+  puntosRey.push( new THREE.Vector2( 2, 14 ) );
+  puntosRey.push( new THREE.Vector2( 2, 15 ) );
+  puntosRey.push( new THREE.Vector2( 3.5, 17.5 ) );
+  puntosRey.push( new THREE.Vector2( 0, 18.5 ) );
+  var reyForma1 = new THREE.LatheGeometry(puntosRey);
+  var reyMalla1 = new THREE.Mesh(reyForma1);
+  
+  var reyForma2 = new THREE.SphereGeometry( 1 );
+  reyForma2.translate(0,19,0);
+  var reyMalla2 = new THREE.Mesh(reyForma2);
+  
+  var reyForma3= new THREE.CylinderGeometry( 0.4, 0.4, 2.5 );
+  reyForma3.translate(0,20.5,0);
+  var reyMalla3 = new THREE.Mesh(reyForma3);
+  
+  var reyForma4= new THREE.CylinderGeometry( 0.4, 0.4, 2.25 );
+  reyForma4.translate(21,0,0);
+  reyForma4.rotateZ(Math.PI/2);
+  var reyMalla4 = new THREE.Mesh(reyForma4);
+
+  // Juntar mallas de la rey:
+  var reyForma = new THREE.Geometry();
+  this.merge(reyMalla1.geometry, reyMalla1.matrix);
+  this.merge(reyMalla2.geometry, reyMalla2.matrix);
+  this.merge(reyMalla3.geometry, reyMalla3.matrix);
+  this.merge(reyMalla4.geometry, reyMalla4.matrix);
+}
+
+REY.ReyGeometry.prototype = new THREE.Geometry();
+
+function ReyNegro(x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new REY.ReyGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+ReyNegro.prototype = new THREE.Mesh();
+
+CABALLO = new Object();
+
+CABALLO.CaballoGeometry = function(){
+  THREE.Geometry.call(this);
+
+  var puntosCaballo = [];
+  puntosCaballo.push( new THREE.Vector2( 0, 0 ) );
+  puntosCaballo.push( new THREE.Vector2( 4.5, 0 ) );
+  puntosCaballo.push( new THREE.Vector2( 4.5, 1.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 4, 1.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 4, 3.5 ) );
+  puntosCaballo.push( new THREE.Vector2( 3.75, 5 ) );
+  puntosCaballo.push( new THREE.Vector2( 0, 5 ) );
+  var caballoForma1 = new THREE.LatheGeometry(puntosCaballo);
+  var caballoMalla1 = new THREE.Mesh(caballoForma1);
+  
+  var caballoFigura = new THREE.Shape();
+  caballoFigura.moveTo(3, 5);
+  caballoFigura.lineTo(3.75, 7);
+  caballoFigura.lineTo(4.25, 10);
+  caballoFigura.lineTo(3.5, 13);
+  caballoFigura.lineTo(2, 16);
+  caballoFigura.lineTo(0, 17.5);
+  caballoFigura.lineTo(0, 16);
+  caballoFigura.lineTo(-2, 15);
+  caballoFigura.lineTo(-2.5, 13.5);
+  caballoFigura.lineTo(-4.25, 10);
+  caballoFigura.lineTo(-3.25, 9.5);
+  caballoFigura.lineTo(-2.5, 10);
+  caballoFigura.lineTo(-1, 10.75);
+  caballoFigura.lineTo(0, 11);
+  caballoFigura.lineTo(-0.25, 10.5);
+  caballoFigura.lineTo(-2.75, 6.5);
+  caballoFigura.lineTo(-3, 5);
+  caballoFigura.moveTo(3, 5);
+  
+  var caballoForma2 = new THREE.ExtrudeGeometry( caballoFigura, {amount: 3, bevelEnabled: false} );
+  caballoForma2.translate(0,0,-1.5);
+  caballoForma2.rotateY(Math.PI*3/2);
+  var caballoMalla2 = new THREE.Mesh(caballoForma2);
+
+  // Juntar mallas de la caballo:
+  var caballoForma = new THREE.Geometry();
+  this.merge(caballoMalla1.geometry, caballoMalla1.matrix);
+  this.merge(caballoMalla2.geometry, caballoMalla2.matrix);
+}
+
+CABALLO.CaballoGeometry.prototype = new THREE.Geometry();
+
+function CaballoNegro(x,y){
+  var marmol_negro = cargador.load('marmol_negro.jpg');
+  THREE.Mesh.call(this, new CABALLO.CaballoGeometry(), new THREE.MeshPhongMaterial({map: marmol_negro}));	
+  this.position.x=x;
+  this.position.z=y;
+}  
+CaballoNegro.prototype = new THREE.Mesh();
+
 Environment.prototype.setMap= function(map){
   var _offset= Math.floor(map.length/2);
   for(var j=0; j<91; j++)
@@ -250,6 +360,10 @@ Environment.prototype.setMap= function(map){
       this.add(new AlfilNegro(j-_offset,(i-_offset-1)));
     else if (map[i][j]==="r")
       this.add(new ReinaNegra(j-_offset,(i-_offset-1)));
+    else if (map[i][j]==="R")
+      this.add(new ReyNegro(j-_offset,(i-_offset-1))); 
+    else if (map[i][j]==="c")
+      this.add(new CaballoNegro(j-_offset,(i-_offset-1)));
   }
 }
 
@@ -267,7 +381,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="          t                   a                   r         a                   t          ";
+  mapa[11]="          t         c         a         R         r         a         c         t          ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
