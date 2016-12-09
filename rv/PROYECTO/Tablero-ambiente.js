@@ -104,7 +104,7 @@ Environment.prototype.setMap= function(map){
       this.add(new CuadroNegro(10,j-_offset,(i-_offset)));
     else if (map[i][j]==="b")
       this.add(new CuadroBlanco(10,j-_offset,(i-_offset)));
-    else if (map[i][j]==="tn")
+    else if (map[i][j]==="t")
       this.add(new TorreNegra(j-_offset+1,(i-_offset+1)));
   }
 }
@@ -123,7 +123,7 @@ function setup(){
   mapa[8] ="                                                                                           ";
   mapa[9] ="                                                                                           ";
   mapa[10]="x         b         n         b         n         b         n         b         n         x";
-  mapa[11]="          tn                                                                    tn         ";
+  mapa[11]="          t                                                                     t          ";
   mapa[12]="                                                                                           ";
   mapa[13]="                                                                                           ";
   mapa[14]="                                                                                           ";
